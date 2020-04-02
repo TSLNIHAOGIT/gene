@@ -1,7 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d38b7577-1d21-433f-a145-993722867d41" name="Default Changelist" comment="" />
+    <list default="true" id="d38b7577-1d21-433f-a145-993722867d41" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/example/Main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/example/MyProblem.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/shortest_path/MyProblem.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/shortest_path/bfs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/shortest_path_new/Result/CV.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/shortest_path_new/Result/Chrom.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/shortest_path_new/Result/Encoding.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/shortest_path_new/Result/Field.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/shortest_path_new/Result/FitnV.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/shortest_path_new/Result/ObjV.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/shortest_path_new/Result/Phen.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/shortest_path_new/a280.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/shortest_path_new/att48.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/shortest_path_new/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/shortest_path_new/result1.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/shortest_path_new/roadmap.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/shortest_path_new/tsp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/single_obj_programming/Main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/single_obj_programming/MyProblem.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/single_obj_programming/MyProblem_old.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/single_obj_programming/cpplex_eg/book_bag.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/single_obj_programming/cpplex_eg/cplex_example.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/single_obj_programming/other_ga/ga_ipsolve.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/tsp_path/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/tsp_path/tsp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/no_frame/aimfunc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/no_frame/example1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/陕西龙门钢铁（集团）有限责任公司物料运输量表.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Untitled.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Untitled.ipynb" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +50,29 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1ZEPtNyzEeayZytSvG8ejSKYmdi" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\tsl_file\python_project\gene" />
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame" />
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\single_obj_programming" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\single_obj_programming" />
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\single_obj_programming\other_ga\cpplex_eg" />
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame" />
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\Result\example" />
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\no_frame" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -28,8 +85,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.gene">
-    <configuration name="gene" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.Main (1)">
+    <configuration name="Main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="gene" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -37,11 +94,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/geatpy_example/frame/shortest_path_programming" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gene.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/shortest_path_programming/Main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -50,7 +107,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="temp" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="gene" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -58,11 +115,74 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/geatpy_example/frame/single_obj_programming" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/temp.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/single_obj_programming/Main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="MyProblem (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="gene" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/geatpy_example/frame/shortest_path_programming" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/shortest_path_programming/MyProblem.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="cplex_example" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="gene" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/geatpy_example/frame/single_obj_programming/other_ga" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="E:\tsl_file\python_project\gene\geatpy_example\frame\single_obj_programming\other_ga\cpplex_eg\cplex_example.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ipsolve" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="gene" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/geatpy_example/frame/single_obj_programming/other_ga" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="E:\tsl_file\python_project\gene\geatpy_example\frame\single_obj_programming\other_ga\ga_ipsolve.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -73,8 +193,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.gene" />
-        <item itemvalue="Python.temp" />
+        <item itemvalue="Python.Main (1)" />
+        <item itemvalue="Python.cplex_example" />
+        <item itemvalue="Python.ipsolve" />
+        <item itemvalue="Python.Main" />
+        <item itemvalue="Python.MyProblem (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -90,6 +213,19 @@
       <updated>1584401493281</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -118,6 +254,71 @@
           <url>file://$PROJECT_DIR$/gene.py</url>
           <line>128</line>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/tsp_path/tsp.py</url>
+          <line>25</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/tsp_path/tsp.py</url>
+          <line>30</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/tsp_path/tsp.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/tsp_path/tsp.py</url>
+          <line>37</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/shortest_path/MyProblem.py</url>
+          <line>46</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/shortest_path/MyProblem.py</url>
+          <line>50</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/shortest_path/bfs.py</url>
+          <line>19</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/shortest_path/MyProblem.py</url>
+          <line>47</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/shortest_path_programming/MyProblem.py</url>
+          <line>55</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/shortest_path_programming/MyProblem.py</url>
+          <line>80</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/shortest_path_programming/MyProblem.py</url>
+          <line>93</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/shortest_path_programming/MyProblem.py</url>
+          <line>72</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/shortest_path_programming/MyProblem.py</url>
+          <line>62</line>
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
