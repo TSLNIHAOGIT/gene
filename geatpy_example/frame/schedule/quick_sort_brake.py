@@ -1,0 +1,137 @@
+#encoding=utf-8
+import os ,sys
+sys.path.insert(0,os.path.abspath(os.path.join(os.path.dirname(__file__),'../../..')))
+from geatpy_example.frame.schedule.plot_example import plot_example
+import random
+size_dict={'1':(85.5,16.3),'2':(99.3,16.92),'3':(119.53,22.5),'4':(110,19.22),'5':(110,17.2)}
+
+wait_list=list(size_dict.values())*3
+
+random.shuffle(wait_list)
+# wait_list=wait_list[6:12]
+#按照宽度排序，宽的在前么
+#wait_list=sorted(wait_list,key =lambda x:x[1],reverse=True)
+W=34
+L=280
+N=len(wait_list)
+
+
+
+#可排序点队列
+available_queue=[(0,0)]
+
+brake_boat={}#船的序号，长，宽，在闸室中的坐标
+
+
+
+#判断能否放下该船
+def judge_put(xi,yi,li,wi):
+    if (xi+li<=L) and (yi+wi)<=W:
+        return True
+    else:
+        return False
+#判断船之间不重叠：
+def judge_overlab(xi,yi,li,wi,xj,yj,lj,wj):
+    if (xi+li<=xj) or (xj+lj<=xi) or (yi+wi<=yj) or (yj+wj<=yi):
+        return True
+    else:
+        return False
+for index,each_boat in enumerate(wait_list):
+    '''
+    先试第一个可排点，再试第二个可排点，能放下（满足约束）就放，否则就放弃该船
+    '''
+    #初始化时，第一艘船的坐标为（0,0）
+    # availabel_point=available_queue[0]
+
+    li,wi=each_boat
+    
+    #先假设船满足两个条件，再进行判断，不满足条件就不放，进行下一只船
+    #判断该船是否放的下，
+    #判断该船与闸室中其它所有船是否重叠；
+    #闸室不为空的化，需要新增的与里面所有的进行比较看是否不重叠
+    for availabel_point in available_queue:
+
+        xi, yi = availabel_point
+        in_flag=judge_put(xi,yi,li,wi)
+
+        #判断能否放下该船
+        if in_flag:
+            if len(brake_boat)>0:
+                #判断放下该船后，与闸室中其它的船是否会重叠
+                overlap_flag=False
+                for num_boat,in_boat in brake_boat.items():
+                    [(xj,yj),(lj,wj)]=in_boat
+                    
+                    if not judge_overlab(xi,yi,li,wi,xj,yj,lj,wj):
+                        print('该船重叠',index,li,wi)
+                        overlap_flag=True
+                        break
+                #能放下该船，但是与其它船有重叠，则选下一个排放点进行放
+                if overlap_flag:
+                    continue
+                #不重叠时，把该船放入闸室中        
+                if not overlap_flag:
+                    brake_boat[index]=[(xi,yi),(li,wi)]
+                    #移除已用的可排点，增加新的可排点
+                    available_queue.remove(availabel_point)
+                    available_queue.extend([(xi,yi+wi),(xi+li,yi)])
+                    #可排点重新排序
+                    available_queue=sorted(available_queue, key=(lambda x: [x]))
+                    print('该船入闸',index,li,wi)
+                    break
+
+
+            else:
+                #闸室中一艘船都没有时，直接放
+                brake_boat[index]=[(xi,yi),(li,wi)]
+                #移除已用的可排点，增加新的可排点
+                available_queue.remove(availabel_point)
+                available_queue.extend([(xi,yi+wi),(xi+li,yi)])
+                # 可排点重新排序
+                available_queue = sorted(available_queue, key=(lambda x: [x]))
+                print('该船入闸',index,li,wi)
+                break
+    else:
+        print('放弃该船',index,li,wi)
+print('finished')
+print('闸室信息',brake_boat)
+
+X=[]
+Y=[]
+li_e=[]
+wi_e=[]
+for k,v in brake_boat.items():
+    X.append(v[0][0]/L)
+    Y.append(v[0][1]/W)
+    li_e.append(v[1][0]/L)
+    wi_e.append(v[1][1]/W)
+
+    
+    
+N_e=len(brake_boat)
+
+plot_example(X, Y, li_e, wi_e,N_e)
+print('plot finished')
+
+'''
+F:\陶士来文件\software\python3_6_5\python.exe E:/tsl_file/python_project/gene/geatpy_example/frame/schedule/quick_sort_brake.py
+sys sss argv11 ['E:/tsl_file/python_project/gene/geatpy_example/frame/schedule/quick_sort_brake.py']
+sys sss argv22 ['E:/tsl_file/python_project/gene/geatpy_example/frame/schedule/quick_sort_brake.py']
+该船入闸 0 85.5 16.3
+该船入闸 1 99.3 16.92
+该船重叠 2 110 19.22
+放弃该船 2 110 19.22
+该船重叠 3 110 17.2
+该船入闸 3 110 17.2
+该船入闸 4 85.5 16.3
+该船重叠 5 99.3 16.92
+该船重叠 5 99.3 16.92
+放弃该船 5 99.3 16.92
+finished
+闸室信息 {0: [(0, 0), (85.5, 16.3)], 1: [(0, 16.3), (99.3, 16.92)], 3: [(99.3, 16.3), (110, 17.2)], 4: [(85.5, 0), (85.5, 16.3)]}
+plot finished
+
+Process finished with exit code 0
+
+'''
+                    
