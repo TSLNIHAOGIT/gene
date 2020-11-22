@@ -23,6 +23,17 @@ available_queue=[(0,0)]
 brake_boat={}#船的序号，长，宽，在闸室中的坐标
 
 
+###############结合遗传算法基本思想
+'''
+（1）一开始的想法，例如共12艘船，然后遗传算法每次随机选取其中的6艘进行排列，每次只计算这6艘船的适应度函数，进行优化
+
+（2）随机取6艘船固定下来，然后进行全排列，计算完所有6艘船的适应度函数；遗传算法学到的是如何排列该6艘船
+     https://blog.csdn.net/u011000290/article/details/46838079
+
+
+'''
+
+
 
 #判断能否放下该船
 def judge_put(xi,yi,li,wi):
@@ -100,13 +111,18 @@ X=[]
 Y=[]
 li_e=[]
 wi_e=[]
+
+s=0
 for k,v in brake_boat.items():
+    s=s+v[1][0]*v[1][1]
+
     X.append(v[0][0]/L)
     Y.append(v[0][1]/W)
     li_e.append(v[1][0]/L)
     wi_e.append(v[1][1]/W)
 
-    
+
+print('面积利用率',s/(L*W))
     
 N_e=len(brake_boat)
 
