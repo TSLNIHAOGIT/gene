@@ -12,7 +12,7 @@ import numpy as np
 
 
 
-def plot_example(X,Y,li,wi,N):
+def plot_example(X,Y,li,wi,N,brake_num=0):
 
     fig1 = plt.figure()
     ax1 = fig1.add_subplot(111, aspect='equal')
@@ -29,7 +29,7 @@ def plot_example(X,Y,li,wi,N):
                     fill=False
                 )
             )
-    fig1.savefig('rect1.png', dpi=90, bbox_inches='tight')
+    fig1.savefig('rect_{}.png'.format(brake_num), dpi=90, bbox_inches='tight')
 
     # ax1.add_patch(
     #

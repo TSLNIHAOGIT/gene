@@ -87,9 +87,9 @@ def quick_sort_brake(wait_list,L,W):
                         available_queue.remove(availabel_point)
 
                         #可排点，应该能放下船，才会加入队列中
-                        if (L-xi>85) and (W-yi-wi>16):
+                        if (L-xi>=85) and (W-yi-wi>=16):
                             available_queue.append((xi,yi+wi))
-                        if (L-xi-li>85) and (W-yi>16):
+                        if (L-xi-li>=85) and (W-yi>=16):
                             available_queue.append((xi+li,yi))
 
                         # available_queue.extend([(xi,yi+wi),(xi+li,yi)])
@@ -106,9 +106,9 @@ def quick_sort_brake(wait_list,L,W):
                     available_queue.remove(availabel_point)
 
                     # 可排点，应该能放下船，才会加入队列中
-                    if (L - xi > 85) and (W - yi - wi > 16):
+                    if (L - xi >= 85) and (W - yi - wi >= 16):
                         available_queue.append((xi, yi + wi))
-                    if (L - xi - li > 85) and (W - yi > 16):
+                    if (L - xi - li >= 85) and (W - yi >= 16):
                         available_queue.append((xi + li, yi))
                     # available_queue.extend([(xi,yi+wi),(xi+li,yi)])
                     # 可排点重新排序
@@ -124,14 +124,16 @@ def quick_sort_brake(wait_list,L,W):
 
 if __name__=='__main__':
     size_dict = {'1': (85.5, 16.3), '2': (99.3, 16.92), '3': (119.53, 22.5), '4': (110, 19.22), '5': (110, 17.2)}
-    wait_list = list(size_dict.values()) * 2
-    random.shuffle(wait_list)
+    wait_list = list(size_dict.values()) * 2#[(278-85,34-16)]+
+    # random.shuffle(wait_list)
     # wait_list=wait_list[6:12]
     # 按照宽度排序，宽的在前么
     # wait_list=sorted(wait_list,key =lambda x:x[1],reverse=True)
     W = 34
     L = 280
     N = len(wait_list)
+    
+    #wait_list={index:each for index, each in enumerate(wait_list)}
 
     brake_boat=quick_sort_brake(wait_list,L,W)
 
