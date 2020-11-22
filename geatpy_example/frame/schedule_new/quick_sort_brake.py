@@ -54,6 +54,12 @@ def quick_sort_brake(wait_list,L,W):
         #判断该船是否放的下，
         #判断该船与闸室中其它所有船是否重叠；
         #闸室不为空的化，需要新增的与里面所有的进行比较看是否不重叠
+
+        #无可排点时，退出
+        if len(available_queue)<1:
+            print('无可排点，本轮结束')
+            break
+
         for availabel_point in available_queue:
 
             xi, yi = availabel_point
@@ -79,7 +85,14 @@ def quick_sort_brake(wait_list,L,W):
                         brake_boat[index]=[(xi,yi),(li,wi)]
                         #移除已用的可排点，增加新的可排点
                         available_queue.remove(availabel_point)
-                        available_queue.extend([(xi,yi+wi),(xi+li,yi)])
+
+                        #可排点，应该能放下船，才会加入队列中
+                        if (L-xi>85) and (W-yi-wi>16):
+                            available_queue.append((xi,yi+wi))
+                        if (L-xi-li>85) and (W-yi>16):
+                            available_queue.append((xi+li,yi))
+
+                        # available_queue.extend([(xi,yi+wi),(xi+li,yi)])
                         #可排点重新排序
                         available_queue=sorted(available_queue, key=(lambda x: [x]))
                         print('该船入闸',index,li,wi)
@@ -91,7 +104,13 @@ def quick_sort_brake(wait_list,L,W):
                     brake_boat[index]=[(xi,yi),(li,wi)]
                     #移除已用的可排点，增加新的可排点
                     available_queue.remove(availabel_point)
-                    available_queue.extend([(xi,yi+wi),(xi+li,yi)])
+
+                    # 可排点，应该能放下船，才会加入队列中
+                    if (L - xi > 85) and (W - yi - wi > 16):
+                        available_queue.append((xi, yi + wi))
+                    if (L - xi - li > 85) and (W - yi > 16):
+                        available_queue.append((xi + li, yi))
+                    # available_queue.extend([(xi,yi+wi),(xi+li,yi)])
                     # 可排点重新排序
                     available_queue = sorted(available_queue, key=(lambda x: [x]))
                     print('该船入闸',index,li,wi)
