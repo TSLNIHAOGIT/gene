@@ -4,15 +4,14 @@
     <list default="true" id="d38b7577-1d21-433f-a145-993722867d41" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/MyProblem.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/MyProblem.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/Chrom.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/Chrom.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/Field.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/Field.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/FitnV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/FitnV.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/ObjV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/ObjV.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/Phen.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/Phen.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/plot_example.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/plot_example.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/quick_sort_brake.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/quick_sort_brake.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/rect1.png" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/rect1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/rect_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/rect_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/rect_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/rect_1.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/result1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/result1.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gene.wpu" beforeDir="false" afterPath="$PROJECT_DIR$/gene.wpu" afterDir="false" />
     </list>
@@ -66,7 +65,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.quick_sort_brake (1)">
+  <component name="RunManager" selected="Python.Main (1)">
     <configuration name="Main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="gene" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -325,6 +324,11 @@
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new/quick_sort_brake.py</url>
           <line>43</line>
           <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new/Main.py</url>
+          <line>95</line>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

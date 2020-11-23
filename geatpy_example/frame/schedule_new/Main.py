@@ -6,7 +6,7 @@ sys.path.insert(0,os.path.abspath(os.path.join(os.path.dirname(__file__),'../../
 from geatpy_example.frame.schedule_new.MyProblem import MyProblem # 导入自定义问题接口
 from geatpy_example.frame.schedule_new.plot_example import plot_example
 from geatpy_example.frame.schedule_new.quick_sort_brake import quick_sort_brake
-
+import json
 
 
 def each_brake(each_wait_list,L,W,brake_num,wait_list_num):
@@ -22,7 +22,11 @@ def each_brake(each_wait_list,L,W,brake_num,wait_list_num):
     """===============================算法参数设置============================="""
     myAlgorithm = ea.soea_SEGA_templet(problem, population)  # 实例化一个算法模板对象，单目标模板
     # myAlgorithm=ea.moea_NSGA2_templet(problem, population)  #多目模板
-    myAlgorithm.MAXGEN = 13  # 13 # 最大进化代数
+    myAlgorithm.MAXGEN = 20  # 13 # 最大进化代数
+    myAlgorithm.logTras = 1  # 设置每多少代记录日志，若设置成0则表示不记录日志
+    myAlgorithm.verbose = True  # 设置是否打印输出日志信息
+    myAlgorithm.drawing = 0  # 设置绘图方式（0：不绘图；1：绘制结果图；2：绘制目标空间过程动画；3：绘制决策空间过程动画）
+
     """==========================调用算法模板进行种群进化======================="""
     [population, obj_trace, var_trace] = myAlgorithm.run()  # 执行算法模板
     population.save()  # 把最后一代种群的信息保存到文件中
@@ -40,7 +44,14 @@ def each_brake(each_wait_list,L,W,brake_num,wait_list_num):
     #best_brake_seq={i:wait_list[i] for i in best_sort_sequence}
     best_brake_seq=wait_list[best_sort_sequence]
     brake_boat = quick_sort_brake(best_brake_seq, L, W)
+    
+    #将快速入闸的顺序，对应到最优选择的顺序
+    brake_boat={best_sort_sequence[k]:v for k,v in brake_boat.items()}
+    
+    #将最优选择的顺序，对应到最原始的队列中的序号
     brake_boat={wait_list_num[k]:v for k,v in brake_boat.items()}
+    
+    
 
     X = []
     Y = []
@@ -68,9 +79,13 @@ def each_brake(each_wait_list,L,W,brake_num,wait_list_num):
     return {'brake_boat':brake_boat,'best_use_rate':best_use_rate}
 
 def main(wait_list,L,W):
+    
     wait_list_num=[i for i in range(len(wait_list))]
     all_brake_boat={}
+
+    #贪婪的获取多闸次最优组合：即先获取第一闸的最优组合，然后去掉已经组合的内容，将剩下的内容继续进行最优组合以此类推
     for brake_num in range(2):
+        # print('brake_num={} \n wait_list shape={}'.format(brake_num,wait_list.shape))
         each_wait_list=wait_list
         best_each_brake=each_brake(each_wait_list,L,W,brake_num,wait_list_num)
         all_brake_boat[brake_num]=best_each_brake
@@ -78,12 +93,24 @@ def main(wait_list,L,W):
         ##去除前面闸次的船只
         #根据索引去除内容
         #wait_list=np.delete(wait_list,list(best_each_brake['brake_boat'].keys()))
+        #print('wait_list={}\n wait_list_num={} \n all_brake_boat={}'.format(wait_list,wait_list_num,all_brake_boat))
+        
+        #wait_list=wait_list.tolist()
+        each_brake_num_list=list(best_each_brake['brake_boat'].keys())
+
+        #根据索引序号删除相应的内容
+        wait_list=np.delete(wait_list,each_brake_num_list,axis=0)
+
+
+        
         for i in best_each_brake['brake_boat']:
-            wait_list=list(wait_list)
-            wait_list.pop(i)
-            #移除索引
-            wait_list_num.remove(i)
-        wait_list=np.array(wait_list)
+            # print('i={}'.format(i))
+            try:
+                #移除具体的内容
+                wait_list_num.remove(i)
+            except Exception as e:
+                print('e={} \n brake_num={} \n  i={} \n wait_list={}'.format(e,brake_num ,i,wait_list))
+        #wait_list=np.array(wait_list)
         
     return all_brake_boat
 
@@ -91,17 +118,23 @@ def main(wait_list,L,W):
 
 
 if __name__ == '__main__':
-    repeat = 10
+    # repeat = 1
+    #
+    # L_r = list(np.random.uniform(85, 130, 20)) * repeat
+    #
+    # W_r = list(np.random.uniform(16, 23, 20)) * repeat
+    #
+    # size_dict = {'1': (85.5, 16.3), '2': (99.3, 16.92), '3': (119.53, 22.5), '4': (110, 19.22), '5': (110, 17.2)}
+    # wait_list = np.array(list(size_dict.values()) * repeat)
+    #
+    # # 新增随机造的船舶
+    # wait_list = np.vstack([wait_list, [[round(ll, 2), round(ww, 2)] for ll, ww in zip(L_r, W_r)]])
+    # with open('wait_list.json', 'w') as f:
+    #     json.dump(wait_list.tolist(), f)
 
-    L_r = list(np.random.uniform(85, 130, 20)) * repeat
 
-    W_r = list(np.random.uniform(16, 23, 20)) * repeat
 
-    size_dict = {'1': (85.5, 16.3), '2': (99.3, 16.92), '3': (119.53, 22.5), '4': (110, 19.22), '5': (110, 17.2)}
-    wait_list = np.array(list(size_dict.values()) * repeat)
-
-    # 新增随机造的船舶
-    wait_list = np.vstack([wait_list, [[round(ll, 2), round(ww, 2)] for ll, ww in zip(L_r, W_r)]])
+    wait_list=np.array([[85.5, 16.3], [99.3, 16.92], [119.53, 22.5], [110.0, 19.22], [110.0, 17.2], [91.07, 18.68], [113.97, 22.33], [92.96, 21.72], [110.52, 16.93], [109.07, 19.81], [92.92, 22.13], [94.3, 22.16], [111.22, 20.09], [129.81, 21.48], [124.6, 20.91], [126.09, 19.62], [93.87, 16.06], [118.79, 17.75], [91.66, 17.91], [115.73, 17.95], [110.82, 22.75], [121.55, 18.56], [111.28, 19.54], [96.35, 19.25], [129.97, 21.96]])
 
     # wait_list=wait_list[6:12]
     # 按照宽度排序，宽的在前么

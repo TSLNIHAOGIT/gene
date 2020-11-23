@@ -50,7 +50,7 @@ def plot_example(X,Y,li,wi,N,brake_num=0):
     #     )
     # )
 
-    plt.show()
+    # plt.show()
     # fig1.savefig('rect1.png', dpi=90, bbox_inches='tight')
 
 if __name__=='__main__':
