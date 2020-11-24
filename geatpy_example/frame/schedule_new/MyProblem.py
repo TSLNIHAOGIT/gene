@@ -50,12 +50,14 @@ class MyProblem(ea.Problem):  # 继承Problem父类
             sqare_rate=s/(self.L*self.W)
             
         
-            print('面积利用率',sqare_rate)
+            # print('面积利用率',sqare_rate)
             Vars_brake_boat.append(sqare_rate)
-            
-        
-        
-        
+
+            ##可以加一些约束条件：
+            # 例如公平性：顺序在前的尽量排在闸室中；
+            #当船只数量不够时，一刀切之后尽量使得剩余的面积最大（暂时不需要，其它场景需要）
+
+
  
         obj1=np.array(Vars_brake_boat).reshape(-1,1) # (4000,)#面积最大
        
