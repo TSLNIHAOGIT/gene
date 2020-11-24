@@ -2,39 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d38b7577-1d21-433f-a145-993722867d41" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/Main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/MyProblem.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/Result/CV.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/Result/Chrom.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/Result/Encoding.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/Result/Field.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/Result/FitnV.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/Result/ObjV.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/Result/Phen.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/plot_example.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/quick_sort_brake.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/rect1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/rect1_mluti.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/rect1_more.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/rect_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/rect_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/result1.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/result1_mluti.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/result1_more.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/wait_list.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/plot_example_new.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/MyProblem.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/MyProblem.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/Chrom.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/Chrom.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/Field.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/Field.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/FitnV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/FitnV.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/ObjV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/ObjV.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/Phen.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Result/Phen.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/plot_example.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/plot_example.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/rect_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/rect_0.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/rect_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/rect_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/result1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/result1.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/wait_list.json" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/wait_list.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gene.wpu" beforeDir="false" afterPath="$PROJECT_DIR$/gene.wpu" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/rect_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/rect_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/Result/Chrom.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/Result/Chrom.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/Result/FitnV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/Result/FitnV.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/Result/ObjV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/Result/ObjV.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/Result/Phen.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/Result/Phen.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/plot_example.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/plot_example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/rect_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/rect_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/wait_list.json" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/wait_list.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/对比实验.docx" beforeDir="false" afterPath="$PROJECT_DIR$/对比实验.docx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +74,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Main (2)">
+  <component name="RunManager" selected="Python.Main (1)">
     <configuration name="Main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="gene" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -129,28 +117,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="gene" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/geatpy_example/frame/schedule" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/schedule/Main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="quick_sort_brake (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="plot_example (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="gene" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -162,7 +129,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/schedule_new/quick_sort_brake.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/schedule_new/plot_example.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -171,7 +138,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="quick_sort_brake" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="plot_example" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="gene" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -179,11 +146,32 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/geatpy_example/frame/schedule" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/schedule/quick_sort_brake.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/plot_example.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="plot_example_new" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="gene" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/plot_example_new.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -194,11 +182,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Main (2)" />
         <item itemvalue="Python.Main (1)" />
-        <item itemvalue="Python.quick_sort_brake (1)" />
-        <item itemvalue="Python.Main" />
-        <item itemvalue="Python.quick_sort_brake" />
+        <item itemvalue="Python.plot_example (1)" />
+        <item itemvalue="Python.Main (2)" />
+        <item itemvalue="Python.plot_example" />
+        <item itemvalue="Python.plot_example_new" />
       </list>
     </recent_temporary>
   </component>
@@ -343,32 +331,32 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new/Main.py</url>
-          <line>116</line>
+          <line>131</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new/Main.py</url>
-          <line>112</line>
+          <line>127</line>
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new/Main.py</url>
-          <line>109</line>
+          <line>124</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new/Main.py</url>
-          <line>84</line>
+          <line>97</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new/Main.py</url>
-          <line>85</line>
+          <line>98</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new/Main.py</url>
-          <line>94</line>
+          <line>109</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>

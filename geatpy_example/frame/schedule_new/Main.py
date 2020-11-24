@@ -9,6 +9,31 @@ from geatpy_example.frame.schedule_new.quick_sort_brake import quick_sort_brake
 import json
 
 
+def plot_save(brake_boat,brake_num):
+
+
+    X = []
+    Y = []
+    li_e = []
+    wi_e = []
+    s = 0
+    for k, v in brake_boat.items():
+        s = s + v[1][0] * v[1][1]
+
+        X.append(v[0][0] )
+        Y.append(v[0][1] )
+        li_e.append(v[1][0] )
+        wi_e.append(v[1][1])
+    best_use_rate=s / (L * W)
+    print('最优面积利用率',best_use_rate )
+
+    N_e = len(brake_boat)
+    plot_example(X, Y, li_e, wi_e, N_e,brake_num=brake_num)
+    print('plot finished')
+    return best_use_rate
+
+
+
 def each_brake(each_wait_list,L,W,brake_num,wait_list_num):
     wait_list=each_wait_list
     """===============================实例化问题对象==========================="""
@@ -54,23 +79,11 @@ def each_brake(each_wait_list,L,W,brake_num,wait_list_num):
     
     
 
-    X = []
-    Y = []
-    li_e = []
-    wi_e = []
-    s = 0
-    for k, v in brake_boat.items():
-        s = s + v[1][0] * v[1][1]
 
-        X.append(v[0][0] / L)
-        Y.append(v[0][1] / W)
-        li_e.append(v[1][0] / L)
-        wi_e.append(v[1][1] / W)
-    best_use_rate=s / (L * W)
-    print('最优面积利用率',best_use_rate )
 
-    N_e = len(brake_boat)
-    plot_example(X, Y, li_e, wi_e, N_e,brake_num=brake_num)
+    # N_e = len(brake_boat)
+    # plot_example(X, Y, li_e, wi_e, N_e,brake_num=brake_num)
+    best_use_rate=plot_save(brake_boat, brake_num)
     print('plot finished')
 
     print('有效进化代数：%s' % (obj_trace.shape[0]))
