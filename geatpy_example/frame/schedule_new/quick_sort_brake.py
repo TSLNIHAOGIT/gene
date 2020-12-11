@@ -57,7 +57,7 @@ def quick_sort_brake(wait_list,L,W):
 
         #无可排点时，退出
         if len(available_queue)<1:
-            print('无可排点，本轮结束')
+            # print('无可排点，本轮结束')
             break
 
         for availabel_point in available_queue:
@@ -74,7 +74,7 @@ def quick_sort_brake(wait_list,L,W):
                         [(xj,yj),(lj,wj)]=in_boat
 
                         if not judge_overlab(xi,yi,li,wi,xj,yj,lj,wj):
-                            print('该船重叠',index,li,wi)
+                            # print('该船重叠',index,li,wi)
                             overlap_flag=True
                             break
                     #能放下该船，但是与其它船有重叠，则选下一个排放点进行放
@@ -95,7 +95,7 @@ def quick_sort_brake(wait_list,L,W):
                         # available_queue.extend([(xi,yi+wi),(xi+li,yi)])
                         #可排点重新排序
                         available_queue=sorted(available_queue, key=(lambda x: [x]))
-                        print('该船入闸',index,li,wi)
+                        # print('该船入闸',index,li,wi)
                         break
 
 
@@ -113,12 +113,13 @@ def quick_sort_brake(wait_list,L,W):
                     # available_queue.extend([(xi,yi+wi),(xi+li,yi)])
                     # 可排点重新排序
                     available_queue = sorted(available_queue, key=(lambda x: [x]))
-                    print('该船入闸',index,li,wi)
+                    # print('该船入闸',index,li,wi)
                     break
         else:
-            print('放弃该船',index,li,wi)
-    print('finished')
-    print('闸室信息',brake_boat)
+            # print('放弃该船',index,li,wi)
+            pass
+    # print('finished')
+    # print('闸室信息',brake_boat)
     return brake_boat
 
 
