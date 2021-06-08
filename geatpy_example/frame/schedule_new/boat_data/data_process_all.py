@@ -2,9 +2,7 @@
 import pandas as pd
 import re
 import os
-# from geatpy_example.frame.schedule_new.Main import main
-
-from geatpy_example.frame.schedule_same_times.Main import main
+from geatpy_example.frame.schedule_new.Main import main
 import numpy as np
 
 def process_data(row):
@@ -79,11 +77,9 @@ def each_main(path,df,sheet_name=''):
     s_path = 'save_path'
 
     wait_list, ind_name = get_waitlist(df)
-    print('wait_list',wait_list)
 
     filepath, fullflname = os.path.split(path)
     fname, ext = os.path.splitext(fullflname)
-    # print('go')
     brake_boat_df = get_brake_boat(np.array(wait_list), L, W, ind_name)
 
     columns = ['best_use_rate', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
@@ -92,28 +88,20 @@ def each_main(path,df,sheet_name=''):
 if __name__=='__main__':
     # path='scheduled_total_split.xlsx'
     # path='31个三通局5月过坝计划汇总.xlsx'
-    path='5月31天单独过坝计划修改后.xlsx'
-    # path='0519重排.xlsx'
-
+    path='sheet_all.xlsx'
     data = pd.read_excel(path, header=None, sheet_name=None)
 
     df_dict=data
-    print('sheet_name all', df_dict.keys())
+    print('sheet_name all',df_dict.keys())
     for sheet_name,e_df in df_dict.items():
+        print('sheet name',sheet_name)
+
         e_df = e_df.drop_duplicates()
-
-        e_df=e_df.dropna(how='all',axis=0)
-        e_df = e_df.dropna(how='all', axis=1)
-        if sheet_name!='day_0525':
-            continue
-        print('e_df shape', e_df.shape)
-        print('sheet name', sheet_name)
-
-        try:
-            each_main(path,e_df,sheet_name=sheet_name)
-        except Exception as e:
-            print('err',e,sheet_name)
-
+        each_main(path, e_df, sheet_name=sheet_name)
+        # try:
+        #     each_main(path,e_df,sheet_name=sheet_name)
+        # except Exception as e:
+        #     print('err',e)
 
 
     # W = 32.8  # 33.5#32.8  # 34

@@ -43,14 +43,14 @@ def each_brake(each_wait_list,L,W,brake_num,wait_list_num):
     problem = MyProblem(wait_list, L, W)  # 生成问题对象
     """=================================种群设置==============================="""
     Encoding = 'P'  # 编码方式
-    NIND = 5000  #4000,6000 种群规模3000,3（40左右）
+    NIND = 2500  #4000,6000 种群规模3000,3（40左右）
     # ranges还是原来的，Field会在最后一行加上1
     Field = ea.crtfld(Encoding, problem.varTypes, problem.ranges, problem.borders)  # 创建区域描述器
     population = ea.Population(Encoding, Field, NIND)  # 实例化种群对象（此时种群还没被初始化，仅仅是完成种群对象的实例化）
     """===============================算法参数设置============================="""
     myAlgorithm = ea.soea_SEGA_templet(problem, population)  # 实例化一个算法模板对象，单目标模板
     # myAlgorithm=ea.moea_NSGA2_templet(problem, population)  #多目模板
-    myAlgorithm.MAXGEN = 10# 13 # 最大进化代数#3
+    myAlgorithm.MAXGEN = 5#10# 13 # 最大进化代数#3
     # myAlgorithm.recOper = ea.Xovox(XOVR=0.8)  # 设置交叉算子 __init__(self, XOVR=0.7, Half=False)
     # myAlgorithm.mutOper = ea.Mutinv(Pm=0.2)  # 设置变异算子
     myAlgorithm.logTras = 1  # 设置每多少代记录日志，若设置成0则表示不记录日志
@@ -106,12 +106,14 @@ def main(wait_list,L,W):
     #贪婪的获取多闸次最优组合：即先获取第一闸的最优组合，然后去掉已经组合的内容，将剩下的内容继续进行最优组合以此类推
 
     #三闸有问题待会调试（后面两闸数据重合）
-    for brake_num in range(100):
+    for brake_num in range(1500):
         # print('brake_num={} \n wait_list shape={}'.format(brake_num,wait_list.shape))
         each_wait_list=wait_list
+        # print('len={},each_wait_list={}'.format(len(each_wait_list),each_wait_list))
         if len(each_wait_list)<1:
             break
         #每个闸次的原始顺序（每次从零开始排）
+
         best_each_brake=each_brake(each_wait_list,L,W,brake_num,wait_list_num)
 
         brake_boat=best_each_brake['brake_boat']

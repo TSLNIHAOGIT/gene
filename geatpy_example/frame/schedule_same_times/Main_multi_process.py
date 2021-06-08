@@ -3,11 +3,11 @@ import numpy as np
 import geatpy as ea # import geatpy
 import sys,os
 sys.path.insert(0,os.path.abspath(os.path.join(os.path.dirname(__file__),'../../..')))
-from geatpy_example.frame.schedule_new_same.MyProblem import MyProblem # 导入自定义问题接口
-from geatpy_example.frame.schedule_new_same.plot_example import plot_example
-from geatpy_example.frame.schedule_new_same.quick_sort_brake import quick_sort_brake
+from geatpy_example.frame.schedule_same_times.MyProblem_multi_process import MyProblem # 导入自定义问题接口
+from geatpy_example.frame.schedule_same_times.plot_example import plot_example
+from geatpy_example.frame.schedule_same_times.quick_sort_brake import quick_sort_brake
 import json
-
+np.random.seed(1)###设置随机种子使得每次结果一样
 
 
 def plot_save(brake_boat,brake_num):
@@ -50,14 +50,14 @@ def each_brake(each_wait_list,L,W):
     problem = MyProblem(wait_list, L, W)  # 生成问题对象
     """=================================种群设置==============================="""
     Encoding = 'P'  # 编码方式
-    NIND = 6000  # 种群规模
+    NIND = 30000  # 种群规模
     # ranges还是原来的，Field会在最后一行加上1
     Field = ea.crtfld(Encoding, problem.varTypes, problem.ranges, problem.borders)  # 创建区域描述器
     population = ea.Population(Encoding, Field, NIND)  # 实例化种群对象（此时种群还没被初始化，仅仅是完成种群对象的实例化）
     """===============================算法参数设置============================="""
     myAlgorithm = ea.soea_SEGA_templet(problem, population)  # 实例化一个算法模板对象，单目标模板
     # myAlgorithm=ea.moea_NSGA2_templet(problem, population)  #多目模板
-    myAlgorithm.MAXGEN = 5  # 13 # 最大进化代数
+    myAlgorithm.MAXGEN = 50 # 13 # 最大进化代数
     # myAlgorithm.recOper = ea.Xovox(XOVR=0.8)  # 设置交叉算子 __init__(self, XOVR=0.7, Half=False)
     # myAlgorithm.mutOper = ea.Mutinv(Pm=0.2)  # 设置变异算子
     myAlgorithm.logTras = 1  # 设置每多少代记录日志，若设置成0则表示不记录日志
@@ -66,62 +66,26 @@ def each_brake(each_wait_list,L,W):
 
     """==========================调用算法模板进行种群进化======================="""
     [population, obj_trace, var_trace] = myAlgorithm.run()  # 执行算法模板
-    population.save()  # 把最后一代种群的信息保存到文件中
+    # population.save()  # 把最后一代种群的信息保存到文件中
 
     # 输出结果
     best_gen = np.argmin(problem.maxormins * obj_trace[:, 1])  # 记录最优种群个体是在哪一代
     best_ObjV = obj_trace[best_gen, 1]
     print('最优的目标函数值为：%s' % (best_ObjV))
-    print('最优的控制变量值为：')
-
-    for i in range(var_trace.shape[1]):  # (MAXGEN,Dim),进化的总代数和决策变量的维度
-        print(var_trace[best_gen, i])
+    # print('最优的控制变量值为：')
+    #
+    # for i in range(var_trace.shape[1]):  # (MAXGEN,Dim),进化的总代数和决策变量的维度
+    #     print(var_trace[best_gen, i])
 
     best_sort_sequence = [int(each) for each in var_trace[best_gen]]  # (4000, 12)
     #best_brake_seq={i:wait_list[i] for i in best_sort_sequence}
-
-
-
-    # best_brake_seq = wait_list[best_sort_sequence]
-    # all_brake_boat = {}
-    # in_brake_sort = best_brake_seq
-    # sqare_rate,brake_boat=get_sqare_rate(in_brake_sort, L,W)
-    # brake_num=list(brake_boat.keys())
-    # brake_boat={best_sort_sequence[k]:v for k,v in brake_boat.items()}
-    # all_brake_boat[0]= {'brake_boat':brake_boat,'best_use_rate':sqare_rate}
-    # print('一闸最优解：组合={} \n 面积利用率={}'.format(brake_boat,sqare_rate))
-    #
-    # each2=np.delete(best_sort_sequence,brake_num,axis=0)
-    # in_brake_sort2=np.delete(in_brake_sort,brake_num,axis=0)
-    # if len(in_brake_sort2)>0:
-    #     sqare_rate2,brake_boat2=get_sqare_rate(in_brake_sort2, L,W)
-    #     brake_num2=list(brake_boat2.keys())
-    #     #sqare_rate=sqare_rate+sqare_rate2
-    #     brake_boat2={each2[k]:v for k,v in brake_boat2.items()}
-    #     all_brake_boat[1] = {'brake_boat':brake_boat2,'best_use_rate':sqare_rate2}
-    #     print('二闸最优解：组合={} \n 面积利用率={}'.format(brake_boat2,sqare_rate2))
-    #
-    #     each3=np.delete(each2,brake_num2,axis=0)
-    #     in_brake_sort3=np.delete(in_brake_sort2,brake_num2,axis=0)
-    #     if len(in_brake_sort3)>0:
-    #         sqare_rate3,brake_boat3=get_sqare_rate(in_brake_sort3, L,W)
-    #         brake_num3=list(brake_boat3.keys())
-    #
-    #         brake_boat3={each3[k]:v for k,v in brake_boat3.items()}
-    #         all_brake_boat[2] = {'brake_boat':brake_boat3,'best_use_rate':sqare_rate3}#brake_boat3
-    #         print('三闸最优解：组合={} \n 面积利用率={}'.format(brake_boat3,sqare_rate3))
-    #         #sqare_rate=sqare_rate+sqare_rate3
-    # print('all_brake_boat00',all_brake_boat)
-
-
-
 
     best_brake_seq = wait_list[best_sort_sequence]
     all_brake_boat = {}
     all_brake_times = 0
     in_brake_sort = best_brake_seq
     while True:
-        if len(in_brake_sort) > 0 and all_brake_times < 3:
+        if len(in_brake_sort) > 0 :
             sqare_rate, brake_boat = get_sqare_rate(in_brake_sort, L, W)
             # 将闸室序号，映射到原始信号
 
@@ -141,31 +105,12 @@ def each_brake(each_wait_list,L,W):
 
 
             #绘制并保存图形
-            plot_save(brake_boat, all_brake_times)
+            # plot_save(brake_boat, all_brake_times)
 
             all_brake_times = all_brake_times + 1
         else:
             break
     print(' all_brake_boat11', all_brake_boat)
-    
-    
-    
-    
-    
-    
-    
-    #brake_boat = quick_sort_brake(best_brake_seq, L, W)
-    
-    ##将快速入闸的顺序，对应到最优选择的顺序
-    #brake_boat={best_sort_sequence[k]:v for k,v in brake_boat.items()}
-    
-    ##将最优选择的顺序，对应到最原始的队列中的序号
-    #brake_boat={wait_list_num[k]:v for k,v in brake_boat.items()}
-    
-    
-
-
-
     print('有效进化代数：%s' % (obj_trace.shape[0]))
     print('最优的一代是第 %s 代' % (best_gen + 1))
     print('评价次数：%s' % (myAlgorithm.evalsNum))
@@ -224,6 +169,16 @@ if __name__ == '__main__':
  (200.0, 17.0),
  (104.0, 17.0),
  (110.0, 17.2)])
+    #day24
+    wait_list=np.array([[99.0, 16.0], [110.0, 19.0], [106.0, 19.0], [106.0, 18.0], [110.0, 20.0], [110.0, 17.0], [110.0, 19.0], [110.0, 19.0], [110.0, 19.0], [87.0, 15.0], [95.0, 16.0], [105.0, 16.0], [100.0, 16.0], [130.0, 16.0], [130.0, 16.0], [118.0, 20.0], [87.0, 15.0], [105.0, 16.0], [105.0, 16.0], [90.0, 15.0], [72.0, 13.0], [80.0, 14.0], [103.0, 16.0], [79.0, 13.0], [88.0, 16.0], [87.0, 15.0], [85.0, 14.0], [105.0, 16.0], [92.0, 17.0], [105.0, 16.0], [130.0, 16.0], [107.0, 17.0], [85.0, 14.0], [98.0, 16.0], [105.0, 16.0], [80.0, 14.0], [100.0, 16.0], [83.0, 14.0], [99.0, 16.0], [105.0, 18.0], [99.0, 16.0], [87.0, 15.0], [105.0, 16.0], [109.0, 17.0], [92.0, 16.0], [90.0, 15.0], [130.0, 16.0], [95.0, 17.0], [107.0, 17.24], [110.0, 17.0], [100.0, 16.0], [110.0, 17.0], [87.0, 14.0], [100.0, 17.0], [79.0, 11.0], [92.0, 15.0], [99.8, 16.24], [107.0, 17.0], [130.0, 16.0], [79.0, 13.0], [90.0, 15.0], [86.0, 14.0]])
+    # #day29
+    # wait_list=np.array([[110.0, 19.0], [108.0, 17.0], [110.0, 19.0], [107.0, 17.0], [99.0, 16.0], [86.0, 16.0], [110.0, 19.0], [105.0, 16.0], [87.0, 15.0], [105.0, 16.0], [95.0, 16.0], [105.0, 16.0], [88.0, 16.0], [107.0, 17.0], [130.0, 16.0], [110.0, 19.0], [105.0, 16.0], [84.0, 14.0], [108.0, 17.0], [80.0, 14.0], [105.0, 16.0], [100.0, 16.0], [98.0, 16.0], [92.0, 15.0], [87.0, 15.0], [105.0, 16.0], [99.0, 15.0], [105.0, 17.0], [99.0, 16.0], [92.0, 14.0], [130.0, 16.0], [92.0, 16.0], [100.0, 16.0], [99.0, 16.0], [83.0, 15.0], [80.0, 14.0], [105.0, 16.0], [100.0, 16.0], [100.0, 16.0], [75.0, 13.0], [87.0, 15.0], [100.0, 17.0], [78.0, 13.0], [87.0, 14.0], [100.0, 16.0], [79.0, 14.0], [130.0, 16.0], [91.0, 14.0], [110.0, 16.0], [105.0, 16.0], [92.0, 15.0], [100.0, 17.0], [80.0, 14.0], [95.0, 16.0], [87.0, 15.0], [92.0, 14.0], [85.0, 15.0], [105.0, 16.0], [92.0, 16.0], [130.0, 16.0], [100.0, 16.0], [87.0, 14.0], [81.0, 14.0], [80.0, 14.0]])
+    #
+    # #day28
+    # wait_list=np.array([[100.0, 17.0], [100.0, 18.0], [110.0, 17.0], [95.0, 17.0], [112.0, 17.0], [110.0, 19.0], [130.0, 16.0], [108.0, 17.0], [87.0, 15.0], [86.0, 15.0], [95.0, 16.0], [92.0, 15.0], [87.0, 14.0], [80.0, 13.0], [130.0, 16.0], [86.0, 14.0], [75.0, 13.0], [87.0, 15.0], [86.0, 14.0], [105.0, 16.0], [92.0, 17.0], [110.0, 17.0], [130.0, 16.0], [105.0, 16.0], [87.0, 15.0], [95.0, 16.0], [110.0, 17.0], [92.0, 16.0], [99.0, 16.0], [80.0, 14.0], [130.0, 17.0], [105.0, 16.0]])
+
+    #day25
+    wait_list=np.array([[105.0, 16.0], [110.0, 18.0], [100.0, 17.0], [106.0, 18.0], [109.0, 18.0], [130.0, 17.0], [108.0, 18.0], [92.0, 15.0], [110.0, 18.0], [100.0, 18.0], [95.0, 16.0], [110.0, 20.0], [105.0, 17.0], [110.0, 18.0], [110.0, 18.0], [108.0, 18.0], [100.0, 17.0], [92.0, 15.0], [105.0, 16.0], [85.0, 15.0], [85.0, 14.0], [130.0, 17.0], [87.0, 15.0], [92.0, 15.0], [87.0, 14.0], [85.0, 14.0], [75.0, 14.0], [100.0, 18.0], [80.0, 14.0], [80.0, 14.0], [92.0, 15.0], [95.0, 16.0], [80.0, 14.0], [107.0, 17.0], [92.0, 17.0], [87.0, 14.0], [106.0, 17.0], [130.0, 16.0], [93.0, 14.0], [100.0, 17.0], [80.0, 14.0], [95.0, 17.0], [75.0, 14.0], [79.0, 13.0], [80.0, 14.0], [77.0, 14.0], [89.0, 15.0], [88.0, 17.0], [87.0, 15.0], [92.0, 17.0], [105.0, 16.0], [110.0, 18.0], [100.0, 16.0], [130.0, 17.0], [110.0, 17.0], [87.0, 15.0], [110.0, 18.0], [105.0, 17.0], [85.0, 14.0], [78.0, 14.0], [100.0, 17.0], [107.0, 17.0], [92.0, 15.0], [75.0, 13.0], [80.0, 14.0], [90.0, 17.0]])
 
     # wait_list=wait_list[6:12]
     # 按照宽度排序，宽的在前么
@@ -243,86 +198,36 @@ if __name__ == '__main__':
     print('N', N)
     all_brake_boat=main(wait_list, L, W)
     print('all_brake_boat',all_brake_boat)
+    print('length={}'.format(len(all_brake_boat)))
 
     '''
-    {
+    all_brake_boat {
 	0: {
 		'brake_boat': {
-			202: [(0, 0), (91.91, 16.91)],
-			209: [(91.91, 0), (87.97, 17.53)],
-			26: [(179.88, 0), (99.3, 16.92)],
-			122: [(0, 16.91), (91.91, 16.91)],
-			21: [(179.88, 16.92), (99.3, 16.92)],
-			35: [(91.91, 17.53), (85.5, 16.3)]
+			21: [(0, 0), (103.0, 16.0)],
+			0: [(0, 16.0), (85.5, 16.3)],
+			23: [(103.0, 0), (158.0, 19.0)]
 		},
-		'best_use_rate': 0.9878647373949582
+		'best_use_rate': 0.6979455376940134
 	},
 	1: {
 		'brake_boat': {
-			109: [(0, 0), (87.97, 17.53)],
-			162: [(87.97, 0), (91.91, 16.91)],
-			0: [(0, 17.53), (85.5, 16.3)],
-			82: [(87.97, 16.91), (91.91, 16.91)],
-			16: [(179.88, 0), (99.3, 16.92)],
-			41: [(179.88, 16.92), (99.3, 16.92)]
+			14: [(0, 0), (99.0, 16.0)],
+			17: [(0, 16.0), (107.0, 16.0)],
+			15: [(107.0, 16.0), (124.3, 16.2)],
+			9: [(99.0, 0), (130.0, 16.0)]
 		},
-		'best_use_rate': 0.987864737394958
-	}
-}
-
-
-{
-	0: {
-		'brake_boat': {
-			35: [(0, 0), (85.5, 16.3)],
-			40: [(0, 16.3), (85.5, 16.3)],
-			207: [(85.5, 0), (106.26, 16.58)],
-			20: [(85.5, 16.58), (85.5, 16.3)],
-			127: [(171.0, 16.58), (106.26, 16.58)],
-			30: [(191.76, 0), (85.5, 16.3)]
-		},
-		'best_use_rate': 0.9556913445378151
+		'best_use_rate': 0.8533883037694014
 	},
-	1: {
+	2: {
 		'brake_boat': {
-			227: [(0, 0), (106.26, 16.58)],
-			45: [(0, 16.58), (85.5, 16.3)],
-			147: [(85.5, 16.58), (106.26, 16.58)],
-			25: [(106.26, 0), (85.5, 16.3)],
-			15: [(191.76, 0), (85.5, 16.3)],
-			0: [(191.76, 16.3), (85.5, 16.3)]
+			20: [(0, 0), (110.0, 16.0)],
+			10: [(0, 16.0), (100.0, 16.0)],
+			18: [(100.0, 16.0), (106.0, 16.0)],
+			6: [(110.0, 0), (105.0, 16.0)]
 		},
-		'best_use_rate': 0.9556913445378151
-	}
-}
-
-
-{
-	0: {
-		'brake_boat': {
-			130: [(0, 0), (86.43, 17.56)],
-			10: [(0, 17.56), (85.5, 16.3)],
-			190: [(86.43, 0), (86.43, 17.56)],
-			35: [(85.5, 17.56), (85.5, 16.3)],
-			26: [(172.86, 0), (99.3, 16.92)],
-			21: [(172.86, 16.92), (99.3, 16.92)]
-		},
-		'best_use_rate': 0.9646043697478992
-	},
-	1: {
-		'brake_boat': {
-			230: [(0, 0), (86.43, 17.56)],
-			0: [(0, 17.56), (85.5, 16.3)],
-			210: [(86.43, 0), (86.43, 17.56)],
-			11: [(172.86, 0), (99.3, 16.92)],
-			40: [(85.5, 17.56), (85.5, 16.3)],
-			46: [(172.86, 16.92), (99.3, 16.92)]
-		},
-		'best_use_rate': 0.9646043697478992
+		'best_use_rate': 0.7779009608277901
 	}
 }
     '''
-'''
 
-
-'''
