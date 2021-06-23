@@ -55,7 +55,9 @@ def subAimFunc(args):
         # Vars_brake_boat.append((sqare_rate_all_brake - sqare_rate) / (all_brake_times - 1))
         # Vars_brake_boat.append((sqare_rate_all_brake ) / (all_brake_times))
         # Vars_brake_boat.append(all_brake_times)
-    obj_i=(sqare_rate_all_brake - sqare_rate) / (all_brake_times - 1)
+    # obj_i=(sqare_rate_all_brake - sqare_rate) / (all_brake_times - 1)
+    # obj_i = (sqare_rate_all_brake ) / (all_brake_times )
+    obj_i=all_brake_times
     return obj_i
 
 
@@ -63,7 +65,7 @@ class MyProblem(ea.Problem):  # 继承Problem父类
     def __init__(self,wait_list,L,W):
         name = 'MyProblem'  # 初始化name（函数名称，可以随意设置）
         M = 1  # 初始化M（目标维数）
-        maxormins = [-1]  # 初始化maxormins（目标最小最大化标记列表，1：最小化该目标；-1：最大化该目标）
+        maxormins = [1]  # 初始化maxormins（目标最小最大化标记列表，1：最小化该目标；-1：最大化该目标）
         self.wait_list = wait_list
         self.L=L
         self.W=W
@@ -79,7 +81,8 @@ class MyProblem(ea.Problem):  # 继承Problem父类
 
         # 调用父类构造方法完成实例化
         ea.Problem.__init__(self, name, M, maxormins, Dim, varTypes, lb, ub, lbin, ubin)
-        num_cores = int(mp.cpu_count()) # 获得计算机的核心数
+        # num_cores = int(mp.cpu_count()) # 获得计算机的核心数
+        num_cores=8
         self.pool = ProcessPool(num_cores)  # 设置池的大小
 
 

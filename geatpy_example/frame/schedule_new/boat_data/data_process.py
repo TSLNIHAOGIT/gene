@@ -4,7 +4,8 @@ import re
 import os
 # from geatpy_example.frame.schedule_new.Main import main
 
-from geatpy_example.frame.schedule_same_times.Main import main
+# from geatpy_example.frame.schedule_same_times.Main import main
+from geatpy_example.frame.schedule_same_times.Main_multi_process import main
 import numpy as np
 
 def process_data(row):
@@ -104,7 +105,7 @@ if __name__=='__main__':
 
         e_df=e_df.dropna(how='all',axis=0)
         e_df = e_df.dropna(how='all', axis=1)
-        if sheet_name!='day_0525':
+        if sheet_name in['day_0525','day_0526','day_0527','day_0528','day_0529','day_0530','day_0531']:
             continue
         print('e_df shape', e_df.shape)
         print('sheet name', sheet_name)
