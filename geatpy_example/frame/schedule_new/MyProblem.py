@@ -7,9 +7,6 @@ from geatpy_example.frame.schedule_new.quick_sort_brake import quick_sort_brake
 
 
 
-
-
-
 class MyProblem(ea.Problem):  # 继承Problem父类
     def __init__(self,wait_list,L,W):
         name = 'MyProblem'  # 初始化name（函数名称，可以随意设置）

@@ -28,8 +28,9 @@ def plot_example(X, Y, li, wi, N, brake_num=0):
                 fill=False
             )
         )
-    fig1.savefig('rect_{}.png'.format(brake_num), dpi=90, bbox_inches='tight')
 
+    # fig1.savefig('rect_{}.png'.format(brake_num), dpi=90, bbox_inches='tight')
+    plt.show()
     # ax1.add_patch(
     #
     #     patches.Rectangle(

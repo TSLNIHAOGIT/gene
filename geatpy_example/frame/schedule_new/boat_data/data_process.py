@@ -4,8 +4,8 @@ import re
 import os
 # from geatpy_example.frame.schedule_new.Main import main
 
-# from geatpy_example.frame.schedule_same_times.Main import main
-from geatpy_example.frame.schedule_same_times.Main_multi_process import main
+# from geatpy_example.frame.schedule_same_times_v1.Main import main
+from geatpy_example.frame.schedule_same_times_v1.Main_multi_process import main
 import numpy as np
 
 def process_data(row):

@@ -9,14 +9,15 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import numpy as np
 
-
+print('go')
 
 
 def plot_example(X,Y,li,wi,N):
-
+    print('0')
     fig1 = plt.figure()
+    print('0.1')
     ax1 = fig1.add_subplot(111, aspect='equal')
-
+    print('1')
 
     colour=['red','green','white','yellow','blue','black']
     for i in range(N):
@@ -29,7 +30,8 @@ def plot_example(X,Y,li,wi,N):
                     fill=False
                 )
             )
-    fig1.savefig('rect1.png', dpi=90, bbox_inches='tight')
+    print('2')
+    # fig1.savefig('rect1.png', dpi=90, bbox_inches='tight')
 
     # ax1.add_patch(
     #
@@ -54,6 +56,8 @@ def plot_example(X,Y,li,wi,N):
     # fig1.savefig('rect1.png', dpi=90, bbox_inches='tight')
 
 if __name__=='__main__':
+    pass
+
     wait_list=[(119.53, 22.5),
      (99.3, 16.92),
      (85.5, 16.3),
@@ -67,16 +71,16 @@ if __name__=='__main__':
      (110, 17.2),
      (119.53, 22.5)]
     wait_list=wait_list[0:6]
-    
-    
+
+
     N=len(wait_list)
     W=34
     L=280
-    
+
     li=np.array([each[0] for each in wait_list])/L
     wi=np.array([each[1] for each in wait_list])/W
-    
+
     X=np.array([129.42922238, 177.63115518, 172.31146189, 168.24637649,
             90.59384038, 132.09799331])/L
-    Y=np.array([ 2.61286949, 12.38680287, 14.50734225, 15.76862964,  8.08009241,10.86250473])/W    
+    Y=np.array([ 2.61286949, 12.38680287, 14.50734225, 15.76862964,  8.08009241,10.86250473])/W
     plot_example(X, Y, li, wi,N)

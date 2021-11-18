@@ -85,11 +85,12 @@ def quick_sort_brake(wait_list,L,W):
                         brake_boat[index]=[(xi,yi),(li,wi)]
                         #移除已用的可排点，增加新的可排点
                         available_queue.remove(availabel_point)
-
+                        ava_L = 50
+                        ava_W = 8
                         #可排点，应该能放下船，才会加入队列中
-                        if (L-xi>=85) and (W-yi-wi>=16):
+                        if (L-xi>=ava_L) and (W-yi-wi>=ava_W):
                             available_queue.append((xi,yi+wi))
-                        if (L-xi-li>=85) and (W-yi>=16):
+                        if (L-xi-li>=ava_L) and (W-yi>=ava_W):
                             available_queue.append((xi+li,yi))
 
                         # available_queue.extend([(xi,yi+wi),(xi+li,yi)])
