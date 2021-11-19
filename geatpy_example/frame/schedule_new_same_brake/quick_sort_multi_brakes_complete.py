@@ -6,7 +6,8 @@ import random
 import numpy as np
 np.random.seed(1001)
 import time
-
+from app_logging import get_logger
+logger = get_logger()
 
 
 ###############结合遗传算法基本思想
@@ -57,12 +58,16 @@ def judge_overlab(xi,yi,li,wi,xj,yj,lj,wj):
 
 def softmax_1d(data):
     data=np.array(data)
+    # logger.debug(f'data for softmax={data}')
+    # print(f'data to softmax={data}')
     ##数值为0的输出概率也把变成零了
-    data[data==0]=-np.inf
-    return np.exp(data) / sum(np.exp(data))
+    data[data<=0]=-np.inf
+    # print(f'data after for softmax={data}')
+    soft_res=np.exp(data) / sum(np.exp(data))
+    # print(f'soft_res={soft_res}')
+    return soft_res
 def one_brake_area_ratio(brake_boat,L,W):
     '''
-
     :param brake_boat: 闸室船舶信息
     :param L: 闸室长
     :param W: 闸室宽
@@ -73,6 +78,27 @@ def one_brake_area_ratio(brake_boat,L,W):
         s=s+v[1][0]*v[1][1]
     return s/(L*W)
 
+def all_remaining_brake_area_ratio(params):
+    # 【这里本质上是选择闸室，然后放置船舶】
+    # 按照剩余闸室面积占比选择闸室，然后向闸室中放置船舶，觉得这样比较合理，当闸室剩余面积小到连最小的船都放不下了，选择的概率就为0
+    # 从队列中按照概率来选,根据每个闸室的剩余面积占比，进行softmax归一化计算选择闸室的概率，如果剩余面积小于一定阈值(没有可排点时)，就把直接改成0，表示不会在选该闸室
+    # choice_break=np.random.choice([1, 2, 3, 4, 5], 1, p=softmax_1d([0.3, 0, 0.4, 0.6, 0]))[0]
+    all_brake_remaining_area_ratio = {}
+    all_brake_boat=params['all_brake_boat']
+    # logger.debug(f' all_brake_boat to get max prob:{all_brake_boat}')
+    brakes=params['brakes']
+    all_brakes_available_queue=params['all_brakes_available_queue']
+    # 获取所有闸室中，每个闸室的剩余可用的面积占比
+    for brake_num, e_brake_boat in all_brake_boat.items():
+        brake_boat_ = e_brake_boat['brake_boat']
+        L, W = brakes[brake_num]
+        remaining_area_ratio = 1 - one_brake_area_ratio(brake_boat_, L, W)
+        # 当前闸室，可排点队列长度;无可排点时，将剩余可以使用面积占比设为0
+        if (len(all_brakes_available_queue[brake_num]) == 0) or (len(brake_boat_) == 6):
+            # print(f'brake_num:{brake_num}没有可排点，设置剩余可用面积为零：{all_brakes_available_queue[brake_num]}')
+            remaining_area_ratio = 0
+        all_brake_remaining_area_ratio[brake_num] = remaining_area_ratio
+    return all_brake_remaining_area_ratio
 
 def build_plot_para(brake_boat):
     X = []
@@ -86,6 +112,21 @@ def build_plot_para(brake_boat):
         X.append(v[0][0])
         Y.append(v[0][1])
     return np.array(X), np.array(Y), np.array(li), np.array(wi), N
+
+def get_maxprob_brake_num(params):
+
+    all_brake_remaining_area_ratio=all_remaining_brake_area_ratio(params)
+    all_brake_remaining_area_ratio_num = all_brake_remaining_area_ratio.keys()
+    all_brake_remaining_area_ratio_res = all_brake_remaining_area_ratio.values()
+    # print(f'all_brake_remaining_area_ratio={all_brake_remaining_area_ratio}')
+    # print(f'softmax_1d(list(all_brake_remaining_area_ratio_res))={softmax_1d(list(all_brake_remaining_area_ratio_res))}')
+    ##按照概率分布选择闸次
+    # choice_brake_num = np.random.choice(list(all_brake_remaining_area_ratio_num), 1, p=softmax_1d(list(all_brake_remaining_area_ratio_res)))[0]
+    # 按照最大概率选择闸次,这样效果要好很多，对比按照概率分布
+    # print(f'list(all_brake_remaining_area_ratio_res){list(all_brake_remaining_area_ratio_res)}')
+    p = softmax_1d(list(all_brake_remaining_area_ratio_res))
+    choice_brake_num = list(all_brake_remaining_area_ratio_num)[np.argmax(p)]
+    return choice_brake_num
 
 
 
@@ -128,66 +169,61 @@ def quick_sort_multi_brakes(wait_list,brakes):
             # print(f'所有闸室总船数已达到数量上限{all_brake_boat_nums_max}，本轮结束')
             break
         if (sum(all_brakes_available_queue_len.values()) < 1) :
-            print(f'所有闸室可排点队列长度之和为{sum(all_brakes_available_queue_len.values())}，本轮结束')
+            logger.debug(f'所有闸室可排点队列长度之和为{sum(all_brakes_available_queue_len.values())}，本轮结束')
             break
-        #【这里本质上是选择闸室，然后放置船舶】
-        # 按照剩余闸室面积占比选择闸室，然后向闸室中放置船舶，觉得这样比较合理，当闸室剩余面积小到连最小的船都放不下了，选择的概率就为0
-        #从队列中按照概率来选,根据每个闸室的剩余面积占比，进行softmax归一化计算选择闸室的概率，如果剩余面积小于一定阈值(没有可排点时)，就把直接改成0，表示不会在选该闸室
-        # choice_break=np.random.choice([1, 2, 3, 4, 5], 1, p=softmax_1d([0.3, 0, 0.4, 0.6, 0]))[0]
-        all_brake_remaining_area_ratio={}
-        for brake_num ,e_brake_boat in all_brake_boat.items():
-            brake_boat_=e_brake_boat['brake_boat']
-            L,W=brakes[brake_num]
-            remaining_area_ratio=1-one_brake_area_ratio(brake_boat_, L, W)
-            # 当前闸室，可排点队列长度;无可排点时，将剩余可以使用面积占比设为0
-            if (len(all_brakes_available_queue[brake_num]) == 0) or (len(brake_boat_)==6):
-                # print(f'brake_num:{brake_num}没有可排点，设置剩余可用面积为零：{all_brakes_available_queue[brake_num]}')
-                remaining_area_ratio=0
-            all_brake_remaining_area_ratio[brake_num]=remaining_area_ratio
 
-        all_brake_remaining_area_ratio_num=all_brake_remaining_area_ratio.keys()
-        all_brake_remaining_area_ratio_res = all_brake_remaining_area_ratio.values()
-        # print(f'all_brake_remaining_area_ratio={all_brake_remaining_area_ratio}')
-        # print(f'softmax_1d(list(all_brake_remaining_area_ratio_res))={softmax_1d(list(all_brake_remaining_area_ratio_res))}')
-        ##按照概率分布选择闸次
-        # choice_brake_num = np.random.choice(list(all_brake_remaining_area_ratio_num), 1, p=softmax_1d(list(all_brake_remaining_area_ratio_res)))[0]
+        params={'all_brake_boat':all_brake_boat,'brakes': brakes,'all_brakes_available_queue':all_brakes_available_queue}
+        choice_brake_num=get_maxprob_brake_num(params)
+        all_brake_boat_copy = all_brake_boat.copy()
 
-        #按照最大概率选择闸次,这样效果要好很多，对比按照概率分布
-        p = softmax_1d(list(all_brake_remaining_area_ratio_res))
-        choice_brake_num=list(all_brake_remaining_area_ratio_num)[np.argmax(p)]
-
-        L,W= brakes[choice_brake_num]
-
+        L, W = brakes[choice_brake_num]
         #设置添加可排点的条件
         ava_L = 50
         ava_W = 8
-        for availabel_point in all_brakes_available_queue[choice_brake_num]:
+        ##最多有三个闸次
+        for i in range(len(all_brake_boat)):
+            # logger.debug(f'len={len(all_brake_boat_copy)},all_brake_boat_copy={all_brake_boat_copy}')
+            flag = False
+            for availabel_point in all_brakes_available_queue[choice_brake_num]:
 
-            xi, yi = availabel_point
-            in_flag=judge_put(xi,yi,li,wi,L,W)
+                xi, yi = availabel_point
+                in_flag=judge_put(xi,yi,li,wi,L,W)
 
-            brake_boat=all_brake_boat[choice_brake_num]['brake_boat']
-            available_queue = all_brakes_available_queue[choice_brake_num]
-            #判断能否放下该船
-            if in_flag:
-                if len(brake_boat)>0:
-                    #判断放下该船后，与闸室中其它的船是否会重叠
-                    overlap_flag=False
-                    for num_boat,in_boat in brake_boat.items():
-                        [(xj,yj),(lj,wj)]=in_boat
+                brake_boat=all_brake_boat[choice_brake_num]['brake_boat']
+                available_queue = all_brakes_available_queue[choice_brake_num]
+                #判断能否放下该船
+                if in_flag:
+                    if len(brake_boat)>0:
+                        #判断放下该船后，与闸室中其它的船是否会重叠
+                        overlap_flag=False
+                        for num_boat,in_boat in brake_boat.items():
+                            [(xj,yj),(lj,wj)]=in_boat
 
-                        if not judge_overlab(xi,yi,li,wi,xj,yj,lj,wj):
-                            # print(f'该船重叠:brake_num={choice_brake_num},index={index},li={li},wi={wi}')
-                            overlap_flag=True
+                            if not judge_overlab(xi,yi,li,wi,xj,yj,lj,wj):
+                                logger.debug(f'该船重叠:brake_num={choice_brake_num},index={index},li={li},wi={wi}')
+                                overlap_flag=True
+                                break
+                        #能放下该船，但是与其它船有重叠，则选下一个排放点进行放
+                        if overlap_flag:
+                            continue
+                        #不重叠时，把该船放入闸室中
+                        if not overlap_flag:
+                            brake_boat[index]=[(xi,yi),(li,wi)]
+                            #移除已用的可排点，增加新的可排点
+                            available_queue.remove(availabel_point)
+                            # 可排点，应该能放下船，才会加入队列中
+                            if (L - xi >= ava_L) and (W - yi - wi >= ava_W):
+                                available_queue.append((xi, yi + wi))
+                            if (L - xi - li >= ava_L) and (W - yi >= ava_W):
+                                available_queue.append((xi + li, yi))
+                            #可排点重新排序
+                            available_queue=sorted(available_queue, key=(lambda x: [x]))
+                            logger.debug(f'该船入闸:brake_num={choice_brake_num},index={index},li={li},wi={wi}')
                             break
-                    #能放下该船，但是与其它船有重叠，则选下一个排放点进行放
-                    if overlap_flag:
-                        continue
-                    #不重叠时，把该船放入闸室中
-                    if not overlap_flag:
+                    else:
+                        #闸室中一艘船都没有时，直接放
                         brake_boat[index]=[(xi,yi),(li,wi)]
                         #移除已用的可排点，增加新的可排点
-
                         available_queue.remove(availabel_point)
 
                         # 可排点，应该能放下船，才会加入队列中
@@ -195,38 +231,33 @@ def quick_sort_multi_brakes(wait_list,brakes):
                             available_queue.append((xi, yi + wi))
                         if (L - xi - li >= ava_L) and (W - yi >= ava_W):
                             available_queue.append((xi + li, yi))
-
-
-
                         # available_queue.extend([(xi,yi+wi),(xi+li,yi)])
-                        #可排点重新排序
-                        available_queue=sorted(available_queue, key=(lambda x: [x]))
-                        # print(f'该船入闸:brake_num={choice_brake_num},index={index},li={li},wi={wi}')
+                        # 可排点重新排序
+                        available_queue = sorted(available_queue, key=(lambda x: [x]))
+                        logger.debug(f'该船入闸:brake_num={choice_brake_num},index={index},li={li},wi={wi}')
                         break
-                else:
-                    #闸室中一艘船都没有时，直接放
-                    brake_boat[index]=[(xi,yi),(li,wi)]
-                    #移除已用的可排点，增加新的可排点
-                    available_queue.remove(availabel_point)
-
-                    # 可排点，应该能放下船，才会加入队列中
-                    if (L - xi >= ava_L) and (W - yi - wi >= ava_W):
-                        available_queue.append((xi, yi + wi))
-                    if (L - xi - li >= ava_L) and (W - yi >= ava_W):
-                        available_queue.append((xi + li, yi))
-                    # available_queue.extend([(xi,yi+wi),(xi+li,yi)])
-                    # 可排点重新排序
-                    available_queue = sorted(available_queue, key=(lambda x: [x]))
-                    # print(f'该船入闸:brake_num={choice_brake_num},index={index},li={li},wi={wi}')
+            else:
+                logger.debug(f'放弃该船:brake_num={choice_brake_num},index={index},li={li},wi={wi}')
+                all_brake_boat_copy.pop(choice_brake_num)
+                params = {'all_brake_boat': all_brake_boat_copy, 'brakes': brakes,
+                          'all_brakes_available_queue': all_brakes_available_queue}
+                all_brake_remaining_area_ratio = all_remaining_brake_area_ratio(params)
+                if (len(all_brake_boat_copy)==0) or (sum(list(all_brake_remaining_area_ratio.values())) ==0):
+                    logger.debug(f'放弃该船，该船在所有闸室中都放不下，brake_num={choice_brake_num},index={index},li={li},wi={wi}')
                     break
+                choice_brake_num = get_maxprob_brake_num(params)
+                flag = True
+                pass
+                #这里当前闸室可排点无法放下该船就放弃该船了，后面要改成，所有闸室可排点尝试后都放不下，才放弃该船
+                ##待会根据逻辑改这里先调试运行一下
+                #为了相对公平性，应该还是要尝试所有可排点，都不行才放弃；
+                # 否则当前闸室放不下就放弃该船，会造成相对不公平以及造成船的浪费
+                # 【例如三艘船，第一个闸室只能放两艘，放不下第三艘船时就放弃，但其实第三艘船可以放在第二个闸室,多次排序尝试也许就没问题】
+
+            if not flag:
+                break
         else:
             pass
-            #这里当前闸室可排点无法放下该船就放弃该船了，后面要改成，所有闸室可排点尝试后都放不下，才放弃该船
-            ##待会根据逻辑改这里先调试运行一下
-            #为了相对公平性，应该还是要尝试所有可排点，都不行才放弃；
-            # 否则当前闸室放不下就放弃该船，会造成相对不公平以及造成船的浪费
-            # 【例如三艘船，第一个闸室只能放两艘，放不下第三艘船时就放弃，但其实第三艘船可以放在第二个闸室,多次排序尝试也许就没问题】
-            # print(f'放弃该船:brake_num={choice_brake_num},index={index},li={li},wi={wi}')
     # print('finished')
     # print('所有闸室排布信息')
     return all_brake_boat
@@ -259,7 +290,7 @@ if __name__=='__main__':
     s2=time.time()
     print(f'cost time:{s2-s1}')
     print(f'all_brake_boat:{all_brake_boat}')
-
+    #
     # # # #绘图
     for brake_num,e_brake_boat in all_brake_boat.items():
         area_ratio=one_brake_area_ratio(e_brake_boat['brake_boat'], L, W)

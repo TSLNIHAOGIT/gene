@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 import geatpy as ea
-from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes import quick_sort_multi_brakes
+# from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes import quick_sort_multi_brakes
+from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes_complete import quick_sort_multi_brakes
 ##遗传算法解决问题分为两种，一种是将问题转为规划类问题求解；一种是直接对原问题进行求解
 from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes import one_brake_area_ratio
 from multiprocessing import Pool as ProcessPool
@@ -12,6 +13,7 @@ def subAimFunc(args):
     brakes=args[2]
 
     def get_sqare_rate(in_brake_sort, brakes):
+        # print(f'in_brake_sort={in_brake_sort}')
         all_brake_boat = quick_sort_multi_brakes(in_brake_sort, brakes)
         sqare_rate = 0
         for brake_num, e_brake_boat in all_brake_boat.items():

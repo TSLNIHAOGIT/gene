@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d38b7577-1d21-433f-a145-993722867d41" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiProcess.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiProcess.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app_logging.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_brakes_complete.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiProcess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiProcess.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/plot_example.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/plot_example.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_brakes.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_brakes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/readme.md" afterDir="false" />
@@ -33,16 +34,16 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\tsl_file\python_project\gene" />
       <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new_same_brake" />
       <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame" />
       <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_same_times" />
       <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new\boat_data" />
-      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new\Result\boat_data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new\boat_data" />
@@ -170,7 +171,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="quick_sort_multi_brakes" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="quick_sort_multi_brakes_giveup" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="gene" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -182,7 +183,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_brakes.py" />
+      <option name="SCRIPT_NAME" value="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new_same_brake\quick_sort_multi_brakes_complete.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -195,9 +196,9 @@
       <list>
         <item itemvalue="Python.MainMultiProcess" />
         <item itemvalue="Python.plot_example (2)" />
+        <item itemvalue="Python.quick_sort_multi_brakes_giveup" />
         <item itemvalue="Python.Main (2)" />
         <item itemvalue="Python.Main (1)" />
-        <item itemvalue="Python.quick_sort_multi_brakes" />
       </list>
     </recent_temporary>
   </component>
@@ -564,6 +565,16 @@
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_brakes.py</url>
           <line>126</line>
           <option name="timeStamp" value="113" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_brakes_complete.py</url>
+          <line>244</line>
+          <option name="timeStamp" value="119" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiProcess.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="120" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

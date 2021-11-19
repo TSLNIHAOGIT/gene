@@ -6,6 +6,9 @@
 【重点地方是选择闸室时不要按照概率分布，直接按照最大的概率值即可】
 【未使用多进程计算目标函数MyProblem.py
   使用多进程计算目标函数MyProblemMultiProcess.py】
+  quick_sort_multi_brakes.py: 一个闸室可排点试完放不下就放弃该船
+  quick_sort_multi_brakes_complete.py: 所有闸室可排点试完放不下就放弃该船
+
 
 选闸室的地方可以
 1.简化：例如就是顺序，第一闸拍一个船，然后第二闸排一个船，等等；
