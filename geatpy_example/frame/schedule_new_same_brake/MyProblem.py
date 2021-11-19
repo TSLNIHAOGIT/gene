@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 import geatpy as ea
-from geatpy_example.frame.schedule_new_same.quick_sort_brake import quick_sort_brake
+from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes import quick_sort_multi_brakes
 ##遗传算法解决问题分为两种，一种是将问题转为规划类问题求解；一种是直接对原问题进行求解
+from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes import one_brake_area_ratio
 
 
 
@@ -11,17 +12,16 @@ from geatpy_example.frame.schedule_new_same.quick_sort_brake import quick_sort_b
 
 
 class MyProblem(ea.Problem):  # 继承Problem父类
-    def __init__(self,wait_list,L,W):
+    def __init__(self,wait_list,brakes):
         name = 'MyProblem'  # 初始化name（函数名称，可以随意设置）
         M = 1  # 初始化M（目标维数）
         maxormins = [-1]  # 初始化maxormins（目标最小最大化标记列表，1：最小化该目标；-1：最大化该目标）
         self.wait_list = wait_list
-        self.L=L
-        self.W=W
+        self.brakes=brakes
         N=len(wait_list)
         ##这里是选排列，范围是0-11，但是每次只选其中的6个数字排列
         #维度是Dim,范围是0~N-1；例如Dim=18，N=28，即选取18个数字进行排列，范围是从0-27当中选
-        Dim = min(18,N)  # 初始化Dim（决策变量维数）
+        Dim = min(len(brakes)*6,N)  # 初始化Dim（决策变量维数）
         varTypes = [1]*Dim  # 初始化varTypes（决策变量的类型，元素为0表示对应的变量是连续的；1表示是离散的）
         lb = [0]*Dim  # 决策变量下界
         ub = [N-1]*Dim    # 决策变量上界
@@ -40,61 +40,25 @@ class MyProblem(ea.Problem):  # 继承Problem父类
         Vars_brake_boat=[]
         Vars = pop.Phen  # 得到决策变量矩阵(6000, 6)
 
-        def get_sqare_rate(in_brake_sort, L,W):
-            brake_boat=quick_sort_brake(in_brake_sort, L, W)
-            s=0
-            for k,v in brake_boat.items():
-                s=s+v[1][0]*v[1][1]
-        
-            sqare_rate=s/(L*W)            
-            return sqare_rate,brake_boat
-      
+        def get_sqare_rate(in_brake_sort, brakes):
+            all_brake_boat=quick_sort_multi_brakes(in_brake_sort, brakes)
+            sqare_rate = 0
+            for brake_num, e_brake_boat in all_brake_boat.items():
+                L, W=brakes[brake_num]
+                area_ratio = one_brake_area_ratio(e_brake_boat['brake_boat'], L, W)
+                sqare_rate += area_ratio
+            return sqare_rate
+
 
         for each in Vars:
             #in_brake_sort={ i:self.wait_list[i] for i in each}
             sqare_rate_all_brake=0
             all_brake_times = 0
             in_brake_sort = self.wait_list[each]
+            sqare_rate_all_brake = get_sqare_rate(in_brake_sort, self.brakes)
+
+
             weight={0:0.4,1:0.3,2:0.3}
-            while True:
-
-                if len(in_brake_sort)>0 and all_brake_times<3:
-                    sqare_rate,brake_boat=get_sqare_rate(in_brake_sort, self.L,self.W)
-                    brake_num=list(brake_boat.keys())
-
-                    #更新in_brake_sort
-                    ##each2=np.delete(each,brake_num,axis=0)
-                    in_brake_sort=np.delete(in_brake_sort,brake_num,axis=0)
-
-                    sqare_rate_all_brake=sqare_rate_all_brake+sqare_rate#*weight[all_brake_times]
-                    all_brake_times=all_brake_times+1
-                else:
-                    break
-
-
-
-
-            # in_brake_sort=self.wait_list[each]
-            # sqare_rate,brake_boat=get_sqare_rate(in_brake_sort, self.L,self.W)
-            # brake_num=list(brake_boat.keys())
-            #
-            # ##each2=np.delete(each,brake_num,axis=0)
-            # in_brake_sort2=np.delete(in_brake_sort,brake_num,axis=0)
-            # if len(in_brake_sort2)>0:
-            #     sqare_rate2,brake_boat2=get_sqare_rate(in_brake_sort2, self.L,self.W)
-            #     brake_num2=list(brake_boat2.keys())
-            #     sqare_rate=0.4*sqare_rate+0.3*sqare_rate2
-            #
-            #     in_brake_sort3=np.delete(in_brake_sort2,brake_num2,axis=0)
-            #     if len(in_brake_sort3)>0:
-            #         sqare_rate3,brake_boat3=get_sqare_rate(in_brake_sort3, self.L,self.W)
-            #         brake_num3=list(brake_boat3.keys())
-            #         sqare_rate=sqare_rate+0.3*sqare_rate3
-            # print('面积利用率',sqare_rate)
-            # Vars_brake_boat.append(sqare_rate)
-            
-        
-
             Vars_brake_boat.append(sqare_rate_all_brake)
 
 

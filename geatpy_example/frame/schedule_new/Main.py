@@ -43,14 +43,14 @@ def each_brake(each_wait_list,L,W,brake_num,wait_list_num):
     problem = MyProblem(wait_list, L, W)  # 生成问题对象
     """=================================种群设置==============================="""
     Encoding = 'P'  # 编码方式
-    NIND = 2500  #4000,6000 种群规模3000,3（40左右）
+    NIND = 4000  #4000,6000 种群规模3000,3（40左右）
     # ranges还是原来的，Field会在最后一行加上1
     Field = ea.crtfld(Encoding, problem.varTypes, problem.ranges, problem.borders)  # 创建区域描述器
     population = ea.Population(Encoding, Field, NIND)  # 实例化种群对象（此时种群还没被初始化，仅仅是完成种群对象的实例化）
     """===============================算法参数设置============================="""
     myAlgorithm = ea.soea_SEGA_templet(problem, population)  # 实例化一个算法模板对象，单目标模板
     # myAlgorithm=ea.moea_NSGA2_templet(problem, population)  #多目模板
-    myAlgorithm.MAXGEN = 5#10# 13 # 最大进化代数#3
+    myAlgorithm.MAXGEN = 10#10# 13 # 最大进化代数#3
     # myAlgorithm.recOper = ea.Xovox(XOVR=0.8)  # 设置交叉算子 __init__(self, XOVR=0.7, Half=False)
     # myAlgorithm.mutOper = ea.Mutinv(Pm=0.2)  # 设置变异算子
     myAlgorithm.logTras = 1  # 设置每多少代记录日志，若设置成0则表示不记录日志
@@ -303,6 +303,17 @@ if __name__ == '__main__':
 
 
             print('all_brake_boat',all_brake_boat)
+            all_area_ratio=[]
+            all_num=0
+            for k,v in all_brake_boat.items():
+                area_ratio = v['best_use_rate']
+                brake_num = len(v['brake_boat'])
+
+                all_num = all_num + brake_num
+                print(f'局部brake_num:{k},area_ratio:{area_ratio},brake_num={brake_num}')
+                all_area_ratio.append(area_ratio)
+            print(f'总面积利用率：{sum(all_area_ratio)}')
+
 
 
             '''
