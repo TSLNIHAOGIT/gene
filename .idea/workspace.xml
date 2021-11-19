@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d38b7577-1d21-433f-a145-993722867d41" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiProcess.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiProcess.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblem.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblem.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/CV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/CV.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/Chrom.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/Chrom.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/FitnV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/FitnV.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/ObjV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/ObjV.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/Phen.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/Phen.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/plot_example.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/plot_example.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_brakes.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_brakes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/readme.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,19 +37,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new\boat_data" />
-      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new" />
-      <recent name="E:\tsl_file\python_project\gene" />
-      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\single_obj_programming" />
-      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\single_obj_programming\other_ga\cpplex_eg" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new_same_brake" />
       <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame" />
       <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_same_times" />
       <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new\boat_data" />
       <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new\Result\boat_data" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new\boat_data" />
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new" />
+      <recent name="E:\tsl_file\python_project\gene" />
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\single_obj_programming" />
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\single_obj_programming\other_ga\cpplex_eg" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -69,7 +64,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Main (2)">
+  <component name="RunManager" selected="Python.MainMultiProcess">
     <configuration name="Main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="gene" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -133,7 +128,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="MyProblem" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="MainMultiProcess" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="gene" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -145,7 +140,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblem.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiProcess.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -198,11 +193,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Main (2)" />
+        <item itemvalue="Python.MainMultiProcess" />
         <item itemvalue="Python.plot_example (2)" />
+        <item itemvalue="Python.Main (2)" />
         <item itemvalue="Python.Main (1)" />
         <item itemvalue="Python.quick_sort_multi_brakes" />
-        <item itemvalue="Python.MyProblem" />
       </list>
     </recent_temporary>
   </component>
@@ -557,17 +552,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_brakes.py</url>
-          <line>151</line>
+          <line>152</line>
           <option name="timeStamp" value="111" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_brakes.py</url>
-          <line>122</line>
+          <line>123</line>
           <option name="timeStamp" value="112" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_brakes.py</url>
-          <line>125</line>
+          <line>126</line>
           <option name="timeStamp" value="113" />
         </line-breakpoint>
       </breakpoints>

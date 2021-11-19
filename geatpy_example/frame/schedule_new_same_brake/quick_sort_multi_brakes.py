@@ -35,7 +35,8 @@ import time
   3.2 如果不能放入该闸室，就从剩下的闸室中按照2的方法选择闸室再放，直到放下；或者所有闸室可排点都无法满足要求，那么就放弃该船
 4.直到船队列排完或者所有闸室没有可排点就结束
 
-【待优化】放弃船问题，以及闸室无可排点问题；按照概率分布选择，可以改成按照最大概率选择的问题
+【待优化】放弃船问题，以及闸室无可排点问题；
+按照概率分布选择，可以改成按照最大概率选择的问题【这一步非常重要，之前按照概率分布效果一直很差，改成按照最大概率效果一下子就上去了】
 
 '''
 
@@ -124,7 +125,7 @@ def quick_sort_multi_brakes(wait_list,brakes):
         # all_brake_boat_nums_max = all_brake_nums*6
 
         if  (all_brake_boat_nums>=all_brake_boat_nums_max):
-            print(f'所有闸室总船数已达到数量上限{all_brake_boat_nums_max}，本轮结束')
+            # print(f'所有闸室总船数已达到数量上限{all_brake_boat_nums_max}，本轮结束')
             break
         if (sum(all_brakes_available_queue_len.values()) < 1) :
             print(f'所有闸室可排点队列长度之和为{sum(all_brakes_available_queue_len.values())}，本轮结束')

@@ -3,7 +3,7 @@ import numpy as np
 import geatpy as ea # import geatpy
 import sys,os
 sys.path.insert(0,os.path.abspath(os.path.join(os.path.dirname(__file__),'../../..')))
-from geatpy_example.frame.schedule_new_same_brake.MyProblem import MyProblem # 导入自定义问题接口
+from geatpy_example.frame.schedule_new_same_brake.MyProblemMultiProcess import MyProblem # 导入自定义问题接口
 from geatpy_example.frame.schedule_new_same_brake.plot_example import plot_example
 from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes import quick_sort_multi_brakes
 from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes import build_plot_para,one_brake_area_ratio
@@ -53,8 +53,8 @@ def batch_brakes(each_wait_list,L,W):
     problem = MyProblem(wait_list, brakes=brakes)  # 生成问题对象
     """=================================种群设置==============================="""
     Encoding = 'P'  # 编码方式
-    NIND = 6000  # 种群规模
-    # ranges还是原来的，Field会在最后一行加上1
+    NIND = 5000  # 种群规模
+    # ranges还是原来的Field会在最后一行加上1
     Field = ea.crtfld(Encoding, problem.varTypes, problem.ranges, problem.borders)  # 创建区域描述器
     population = ea.Population(Encoding, Field, NIND)  # 实例化种群对象（此时种群还没被初始化，仅仅是完成种群对象的实例化）
     """===============================算法参数设置============================="""
