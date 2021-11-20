@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d38b7577-1d21-433f-a145-993722867d41" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app_logging.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_brakes_complete.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiProcess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiProcess.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/plot_example.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/plot_example.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_brakes.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_brakes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/readme.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,23 +30,23 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../geatpy" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\tsl_file\python_project\gene" />
-      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new_same_brake" />
-      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame" />
-      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_same_times" />
-      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new\boat_data" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new\boat_data" />
       <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new" />
       <recent name="E:\tsl_file\python_project\gene" />
       <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\single_obj_programming" />
       <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\single_obj_programming\other_ga\cpplex_eg" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\tsl_file\python_project\gene" />
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new_same_brake" />
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame" />
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_same_times" />
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new\boat_data" />
     </key>
   </component>
   <component name="RunDashboard">

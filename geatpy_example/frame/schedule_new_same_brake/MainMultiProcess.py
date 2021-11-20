@@ -5,7 +5,8 @@ import sys,os
 sys.path.insert(0,os.path.abspath(os.path.join(os.path.dirname(__file__),'../../..')))
 from geatpy_example.frame.schedule_new_same_brake.MyProblemMultiProcess import MyProblem # 导入自定义问题接口
 from geatpy_example.frame.schedule_new_same_brake.plot_example import plot_example
-from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes import quick_sort_multi_brakes
+# from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes import quick_sort_multi_brakes
+from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes_complete import quick_sort_multi_brakes
 from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes import build_plot_para,one_brake_area_ratio
 import json
 
@@ -45,8 +46,11 @@ def batch_brakes(each_wait_list,L,W):
     #     return sqare_rate,brake_boat
 
     #每个闸次对应的闸室的长宽
-    brakes = {'0': [L, W], '1': [L, W], '2': [L, W],'3': [L, W],'4': [L, W]}
-              # ,'5': [L, W], '6': [L, W], '7': [L, W],'8': [L, W],'9': [L, W]}
+    brakes = {'0': [L, W], '1': [L, W], '2': [L, W],'3': [L, W],'4': [L, W],
+              '5': [L, W], '6': [L, W], '7': [L, W],
+              #'8': [L, W],'9': [L, W],
+              # '10': [L, W], '11': [L, W], '12': [L, W], '13': [L, W], '14': [L, W],'15': [L, W] # ,'16': [L, W]
+              }
     # brakes = {'0': [L, W], '1': [L, W], '2': [L, W]}
     
     wait_list=each_wait_list
@@ -54,14 +58,14 @@ def batch_brakes(each_wait_list,L,W):
     problem = MyProblem(wait_list, brakes=brakes)  # 生成问题对象
     """=================================种群设置==============================="""
     Encoding = 'P'  # 编码方式
-    NIND = 3000  #5000 种群规模
+    NIND = 260  #5000 种群规模
     # ranges还是原来的Field会在最后一行加上1
     Field = ea.crtfld(Encoding, problem.varTypes, problem.ranges, problem.borders)  # 创建区域描述器
     population = ea.Population(Encoding, Field, NIND)  # 实例化种群对象（此时种群还没被初始化，仅仅是完成种群对象的实例化）
     """===============================算法参数设置============================="""
     myAlgorithm = ea.soea_SEGA_templet(problem, population)  # 实例化一个算法模板对象，单目标模板
     # myAlgorithm=ea.moea_NSGA2_templet(problem, population)  #多目模板
-    myAlgorithm.MAXGEN = 20# 30;13 # 最大进化代数
+    myAlgorithm.MAXGEN = 100# 30;13 # 最大进化代数
     # myAlgorithm.recOper = ea.Xovox(XOVR=0.8)  # 设置交叉算子 __init__(self, XOVR=0.7, Half=False)
     # myAlgorithm.mutOper = ea.Mutinv(Pm=0.2)  # 设置变异算子
     myAlgorithm.logTras = 1  # 设置每多少代记录日志，若设置成0则表示不记录日志
@@ -177,8 +181,8 @@ if __name__ == '__main__':
     # W = 34
     # L = 280
 
-    W = 32.8  # 34
-    L = 264  # 280
+    W = 33  # 34 ,32.8
+    L =264  # 280,264
 
     # W=82
     # L=430
