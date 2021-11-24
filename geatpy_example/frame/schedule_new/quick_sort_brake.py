@@ -158,7 +158,7 @@ if __name__=='__main__':
 
     N_e=len(brake_boat)
 
-    plot_example(X, Y, li_e, wi_e,N_e)
+    # plot_example(X, Y, li_e, wi_e,N_e)
     print('plot finished')
 
     '''

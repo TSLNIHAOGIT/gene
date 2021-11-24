@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 import geatpy as ea
-# quick_sort_multi_brakes当前闸室可排点放不下该船就放弃
 # from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes import quick_sort_multi_brakes
-
-#quick_sort_multi_brakes_complete所有闸室可排点都用完了任放不下，才放弃船舶
-from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes_complete import quick_sort_multi_brakes
-# from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_dynamic_brakes_complete import quick_sort_multi_brakes
+# from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes_complete import quick_sort_multi_brakes
+from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_dynamic_brakes_complete import quick_sort_multi_brakes
 ##遗传算法解决问题分为两种，一种是将问题转为规划类问题求解；一种是直接对原问题进行求解
 from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes import one_brake_area_ratio
 from multiprocessing import Pool as ProcessPool
@@ -18,20 +15,18 @@ def subAimFunc(args):
 
     def get_sqare_rate(in_brake_sort, brakes):
         # print(f'in_brake_sort={in_brake_sort}')
-        all_brake_boat = quick_sort_multi_brakes(in_brake_sort, brakes)
+        all_brake_boat,brakes = quick_sort_multi_brakes(in_brake_sort, brakes)
         sqare_rate = 0
         for brake_num, e_brake_boat in all_brake_boat.items():
             L, W = brakes[brake_num]
             area_ratio = one_brake_area_ratio(e_brake_boat['brake_boat'], L, W)
             sqare_rate += area_ratio
-        #平均一个闸室的面积使用率
-        # avg_sqare_rate=sqare_rate/len(all_brake_boat)
-        # return avg_sqare_rate
-        return sqare_rate
+        return all_brake_boat,sqare_rate
 
     in_brake_sort = wait_list[Vars_i]
-    sqare_rate_all_brake = get_sqare_rate(in_brake_sort, brakes)
-    return sqare_rate_all_brake
+    all_brake_boat,sqare_rate_all_brake = get_sqare_rate(in_brake_sort, brakes)
+    return {'all_brake_boat':all_brake_boat,'sqare_rate_all_brake':sqare_rate_all_brake}
+
 
 
 class MyProblem(ea.Problem):  # 继承Problem父类
@@ -61,6 +56,11 @@ class MyProblem(ea.Problem):  # 继承Problem父类
         args = list(zip(Vars, [self.wait_list] * pop.sizes, [self.brakes] * pop.sizes))
         result = self.pool.map_async(subAimFunc, args)
         result.wait()
-        res_sqare_rate_all_brake = result.get()
+        # print('result',result)
+        res = result.get()
+        # print('res',res)
+        res_sqare_rate_all_brake=[each['sqare_rate_all_brake'] for each in res]
+        self.all_brake_boat=res
+
         obj1 = np.array(res_sqare_rate_all_brake).reshape(-1, 1)  # (4000,)#此处改为闸次最小
         pop.ObjV = obj1  # 计算目标函数值，赋值给pop种群对象的ObjV属性,求矩阵列和，即变量之和

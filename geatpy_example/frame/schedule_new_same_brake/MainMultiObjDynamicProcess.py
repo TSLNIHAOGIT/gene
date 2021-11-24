@@ -6,8 +6,8 @@ sys.path.insert(0,os.path.abspath(os.path.join(os.path.dirname(__file__),'../../
 from geatpy_example.frame.schedule_new_same_brake.MyProblemMultiProcess import MyProblem # 导入自定义问题接口
 from geatpy_example.frame.schedule_new_same_brake.plot_example import plot_example
 # from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes import quick_sort_multi_brakes
-from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes_complete import quick_sort_multi_brakes
-# from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_dynamic_brakes_complete import quick_sort_multi_brakes
+# from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes_complete import quick_sort_multi_brakes
+from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_dynamic_brakes_complete import quick_sort_multi_brakes
 from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes import build_plot_para,one_brake_area_ratio
 import json
 
@@ -47,16 +47,11 @@ def batch_brakes(each_wait_list,L,W):
     #     return sqare_rate,brake_boat
 
     #每个闸次对应的闸室的长宽
-    brakes = {'0': [L, W], '1': [L, W],
-              '2': [L, W],
-              '3': [L, W],
-              '4': [L, W],
-              '5': [L, W],
-              '6': [L, W],
-              '7': [L, W],
+    brakes = {'0': [L, W], '1': [L, W], '2': [L, W],'3': [L, W],'4': [L, W],
+              '5': [L, W], '6': [L, W], '7': [L, W],
               '8': [L, W],'9': [L, W],
               '10': [L, W], '11': [L, W], '12': [L, W], '13': [L, W], '14': [L, W],'15': [L, W],
-              '16': [L, W],
+              # '16': [L, W],
               # '17': [L, W],
               # '18': [L, W]
               }
@@ -72,8 +67,8 @@ def batch_brakes(each_wait_list,L,W):
     Field = ea.crtfld(Encoding, problem.varTypes, problem.ranges, problem.borders)  # 创建区域描述器
     population = ea.Population(Encoding, Field, NIND)  # 实例化种群对象（此时种群还没被初始化，仅仅是完成种群对象的实例化）
     """===============================算法参数设置============================="""
-    myAlgorithm = ea.soea_SEGA_templet(problem, population)  # 实例化一个算法模板对象，单目标模板
-    # myAlgorithm=ea.moea_NSGA2_templet(problem, population)  #多目模板
+    # myAlgorithm = ea.soea_SEGA_templet(problem, population)  # 实例化一个算法模板对象，单目标模板
+    myAlgorithm=ea.moea_NSGA2_templet(problem, population)  #多目模板
     myAlgorithm.MAXGEN = 80# 30;13 # 最大进化代数
     # myAlgorithm.recOper = ea.Xovox(XOVR=0.8)  # 设置交叉算子 __init__(self, XOVR=0.7, Half=False)
     # myAlgorithm.mutOper = ea.Mutinv(Pm=0.2)  # 设置变异算子
@@ -98,7 +93,7 @@ def batch_brakes(each_wait_list,L,W):
     #
 
     best_brake_seq = wait_list[best_sort_sequence]
-    all_brake_boat=quick_sort_multi_brakes(best_brake_seq,brakes)
+    all_brake_boat,brakes=quick_sort_multi_brakes(best_brake_seq,brakes)
 
     for brake_num,e_brake_boat in all_brake_boat.items():
         brake_boat=e_brake_boat['brake_boat']
@@ -171,9 +166,9 @@ if __name__ == '__main__':
  # (104.0, 17.0),
  # (110.0, 17.2)])
     wait_list = np.array(
-        [[105.0, 16.0], [110.0, 18.0], [100.0, 17.0], [106.0, 18.0], [109.0, 18.0], [130.0, 17.0]
-
-         ,[108.0, 18.0], [92.0, 15.0], [110.0, 18.0], [100.0, 18.0], [95.0, 16.0], [110.0, 20.0], [105.0, 17.0],
+        [[105.0, 16.0], [110.0, 18.0], [100.0, 17.0], [106.0, 18.0],
+         [109.0, 18.0], [130.0, 17.0],
+         [108.0, 18.0], [92.0, 15.0], [110.0, 18.0], [100.0, 18.0], [95.0, 16.0], [110.0, 20.0], [105.0, 17.0],
          [110.0, 18.0], [110.0, 18.0], [108.0, 18.0], [100.0, 17.0], [92.0, 15.0], [105.0, 16.0], [85.0, 15.0],
          [85.0, 14.0], [130.0, 17.0], [87.0, 15.0], [92.0, 15.0], [87.0, 14.0], [85.0, 14.0], [75.0, 14.0],
          [100.0, 18.0], [80.0, 14.0], [80.0, 14.0], [92.0, 15.0], [95.0, 16.0], [80.0, 14.0], [107.0, 17.0],
@@ -182,8 +177,10 @@ if __name__ == '__main__':
          [87.0, 15.0], [92.0, 17.0], [105.0, 16.0], [110.0, 18.0], [100.0, 16.0], [130.0, 17.0], [110.0, 17.0],
          [87.0, 15.0], [110.0, 18.0], [105.0, 17.0], [85.0, 14.0], [78.0, 14.0], [100.0, 17.0], [107.0, 17.0],
          [92.0, 15.0], [75.0, 13.0], [80.0, 14.0], [90.0, 17.0]
-
          ])
+
+    wait_list = np.array(
+        [[105.0, 16.0], [110.0, 16.0], [100.0, 15.0], [106.0, 14.0]])
 
     # wait_list=wait_list[6:12]
     # 按照宽度排序，宽的在前么
@@ -202,7 +199,7 @@ if __name__ == '__main__':
 
     print('N', N)
     all_brake_boat=main(wait_list, L, W)
-    print(f'all_brake_boat={all_brake_boat}')
+    print(f'brake_num={len(all_brake_boat)},all_brake_boat={all_brake_boat}')
 
     # # # #绘图
     all_area_ratio=0
@@ -214,10 +211,9 @@ if __name__ == '__main__':
         all_num = all_num +brake_num
         print(f'brake_num area_ratio={area_ratio},brake_num={brake_num}')
 
-
         # X, Y, li_e, wi_e, N_e=build_plot_para(e_brake_boat['brake_boat'])
         # print('绘图')
         # plot_example(X, Y, li_e, wi_e,N_e)
     print(f'总面积使用率为：{all_area_ratio},总闸次数：{len(all_brake_boat)}，总船数为：{all_num}')
-    print(f'平均一个闸室面积使用率为：{all_area_ratio/len(all_brake_boat)},总船数为：{all_num}')
+    print(f'平均一个闸室面积使用率为：{all_area_ratio / len(all_brake_boat)},总船数为：{all_num}')
 

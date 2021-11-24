@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import numpy as np
 
-print('go')
+# print('go')
 
 
 def plot_example(X,Y,li,wi,N):
