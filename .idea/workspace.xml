@@ -4,16 +4,6 @@
     <list default="true" id="d38b7577-1d21-433f-a145-993722867d41" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiObjDynamicProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiObjDynamicProcess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/CV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/CV.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/Chroms0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/Chroms0.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/Chroms1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/Chroms1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/Fields0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/Fields0.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/Fields1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/Fields1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/FitnV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/FitnV.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/ObjV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/ObjV.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/Phen.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/Phen.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_last_one.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/get_last_one.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -682,22 +672,22 @@
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py</url>
-          <line>99</line>
+          <line>98</line>
           <option name="timeStamp" value="147" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py</url>
-          <line>100</line>
+          <line>99</line>
           <option name="timeStamp" value="148" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py</url>
-          <line>103</line>
+          <line>102</line>
           <option name="timeStamp" value="149" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py</url>
-          <line>108</line>
+          <line>107</line>
           <option name="timeStamp" value="150" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
@@ -732,17 +722,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py</url>
-          <line>124</line>
+          <line>123</line>
           <option name="timeStamp" value="169" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py</url>
-          <line>129</line>
+          <line>128</line>
           <option name="timeStamp" value="170" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py</url>
-          <line>128</line>
+          <line>127</line>
           <option name="timeStamp" value="171" />
         </line-breakpoint>
       </breakpoints>

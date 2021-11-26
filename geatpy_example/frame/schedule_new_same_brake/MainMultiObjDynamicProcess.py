@@ -45,9 +45,8 @@ def get_raw_num_brake_boat( params):
     #闸次数
     brakes=params['brakes']
     #输入的原始序列
-    wait_list=params['wait_list']
+    best_brake_seq=params['best_brake_seq']
 
-    best_brake_seq = wait_list[best_sort_sequence_]
     all_brake_boat, brakes = quick_sort_multi_brakes(best_brake_seq, brakes=brakes)
 
     for brake_num, e_brake_boat in all_brake_boat.items():
@@ -140,12 +139,12 @@ def batch_brakes(each_wait_list,L,W):
     print(f'brakes_num_ 0={brakes_num_}')
     print(f'best_sort_sequence_0={best_sort_sequence_}')
 
-    all_res = []
+    # all_res = []
     for each in obj_sort:
         ###且闸次数量要小于之前的，否则不加进来
-        if each[0] < obj_opt[0]:
+        if (each[0] < obj_opt[0]) and (brakes_num_[0]-each[2:3]==1):
             print(each)
-            all_res.append(each)
+            # all_res.append(each)
 
             obj_opt_1 = each[:2]
             brakes_num_1 = each[2:3]
@@ -154,37 +153,36 @@ def batch_brakes(each_wait_list,L,W):
             print(f'obj_opt 1 ={obj_opt_1}')
             print(f'brakes_num_ 1={brakes_num_1}')
             print(f'best_sort_sequence_1={best_sort_sequence_1}')
+
+            brakes1 = {f'{i}': [L, W] for i in range(int(brakes_num_1[0]))}
+            best_brake_seq1 = wait_list[best_sort_sequence_1]
+            params1 = {'best_sort_sequence': best_sort_sequence_1, 'brakes': brakes1, 'best_brake_seq': best_brake_seq1}
+            all_brake_boat1 = get_raw_num_brake_boat(params1)
+            print(f'all_brake_boat1={all_brake_boat1}')
+            statics_data(all_brake_boat1)
             break
-
-
-
-    # params0={'best_sort_sequence':}
-    #  #最优序列顺序
-    # best_sort_sequence_=params0['best_sort_sequence_']
-    # #闸次数
-    # brakes=params['brakes']
-    # #输入的原始序列
-    # wait_list=params['wait_list']
-    #
-    # params=
-    # get_raw_num_brake_boat(params)
 
     best_brake_seq = wait_list[best_sort_sequence_]
     brakes = {f'{i}': [L, W] for i in range(int(brakes_num_[0]))}
-    all_brake_boat,brakes=quick_sort_multi_brakes(best_brake_seq,brakes=brakes)
 
-    for brake_num,e_brake_boat in all_brake_boat.items():
-        brake_boat=e_brake_boat['brake_boat']
-
-        # 将快速入闸的顺序，对应到最优选择的顺序
-        brake_boat = {best_sort_sequence_[k]: v for k, v in brake_boat.items()}
-        # 将最优选择的顺序，对应到最原始的队列中的序号
-        wait_list_num = np.array([i for i in range(len(wait_list))])
-        brake_boat = {wait_list_num[k]: v for k, v in brake_boat.items()}
-        e_brake_boat['brake_boat']=brake_boat
+    params0={'best_sort_sequence':best_sort_sequence_,'brakes':brakes,'best_brake_seq':best_brake_seq}
+    all_brake_boat=get_raw_num_brake_boat(params0)
 
 
-    print(' all_brake_boat11', all_brake_boat)
+
+
+    # best_brake_seq = wait_list[best_sort_sequence_]
+    # brakes = {f'{i}': [L, W] for i in range(int(brakes_num_[0]))}
+    # all_brake_boat,brakes=quick_sort_multi_brakes(best_brake_seq,brakes=brakes)
+    # for brake_num,e_brake_boat in all_brake_boat.items():
+    #     brake_boat=e_brake_boat['brake_boat']
+    #     # 将快速入闸的顺序，对应到最优选择的顺序
+    #     brake_boat = {best_sort_sequence_[k]: v for k, v in brake_boat.items()}
+    #     # 将最优选择的顺序，对应到最原始的队列中的序号
+    #     wait_list_num = np.array([i for i in range(len(wait_list))])
+    #     brake_boat = {wait_list_num[k]: v for k, v in brake_boat.items()}
+    #     e_brake_boat['brake_boat']=brake_boat
+    # print(' all_brake_boat11', all_brake_boat)
     
 
     # print('有效进化代数：%s' % (obj_trace.shape[0]))
@@ -198,51 +196,26 @@ def main(wait_list,L,W):
     return all_brake_boat
 
 
+def statics_data(all_brake_boat):
+    # # # #绘图
+    all_area_ratio = 0
+    all_num = 0
+    for brake_num, e_brake_boat in all_brake_boat.items():
+        area_ratio = one_brake_area_ratio(e_brake_boat['brake_boat'], L, W)
+        brake_num = len(e_brake_boat['brake_boat'])
+        all_area_ratio = all_area_ratio + area_ratio
+        all_num = all_num + brake_num
+        print(f'brake_num area_ratio={area_ratio},brake_num={brake_num}')
+
+        # X, Y, li_e, wi_e, N_e=build_plot_para(e_brake_boat['brake_boat'])
+        # print('绘图')
+        # plot_example(X, Y, li_e, wi_e,N_e)
+    print(f'总面积使用率为：{all_area_ratio},总闸次数：{len(all_brake_boat)}，总船数为：{all_num}')
+    print(f'平均一个闸室面积使用率为：{all_area_ratio / len(all_brake_boat)},总船数为：{all_num}')
+
 
 
 if __name__ == '__main__':
-    # repeat = 1
-    #
-    # L_r = list(np.random.uniform(85, 130, 20)) * repeat
-    #
-    # W_r = list(np.random.uniform(16, 23, 20)) * repeat
-    #
-    # size_dict = {'1': (85.5, 16.3), '2': (99.3, 16.92), '3': (119.53, 22.5), '4': (110, 19.22), '5': (110, 17.2)}
-    # wait_list = np.array(list(size_dict.values()) * repeat)
-    #
-    # # 新增随机造的船舶
-    # wait_list = np.vstack([wait_list, [[round(ll, 2), round(ww, 2)] for ll, ww in zip(L_r, W_r)]])
-    # with open('wait_list.json', 'w') as f:
-    #     json.dump(wait_list.tolist(), f)
-    # wait_list=np.array([[85.5, 16.3], [99.3, 16.92], [119.53, 22.5], [110.0, 19.22], [110.0, 17.2], [91.07, 18.68], [113.97, 22.33], [92.96, 21.72], [110.52, 16.93], [109.07, 19.81], [92.92, 22.13], [94.3, 22.16], [111.22, 20.09], [129.81, 21.48], [124.6, 20.91], [126.09, 19.62], [93.87, 16.06], [118.79, 17.75], [91.66, 17.91], [115.73, 17.95], [110.82, 22.75], [121.55, 18.56], [111.28, 19.54], [96.35, 19.25], [129.97, 21.96]])
- #    wait_list=np.array([(85.5, 16.3),
- # (110.0, 19.22),
- # (119.53, 22.5),
- # (99.0, 17.0),
- # (107.0, 17.0),
- # (108.0, 17.0),
- # (105.0, 16.0),
- # (110.0, 17.0),
- # (109.0, 17.0),
- # (130.0, 16.0),
- # (100.0, 16.0),
- # (106.0, 17.0),
- # (105.0, 17.0),
- # (100.0, 17.0),
- # (99.0, 16.0),
- # (124.3, 16.2),
- # (110.0, 19.0),
- # (107.0, 16.0),
- # (106.0, 16.0),
- # (112.0, 17.0),
- # (110.0, 16.0),
- # (103.0, 16.0),
- # (102.0, 17.0),
- # (158.0, 19.0),
- # (158.0, 17.0),
- # (200.0, 17.0),
- # (104.0, 17.0),
- # (110.0, 17.2)])
     wait_list = np.array(
         [
          [105.0, 16.0], [110.0, 18.0], [100.0, 17.0], [106.0, 18.0],
@@ -282,20 +255,6 @@ if __name__ == '__main__':
     print('N', N)
     all_brake_boat=main(wait_list, L, W)
     print(f'brake_num={len(all_brake_boat)},all_brake_boat={all_brake_boat}')
+    statics_data(all_brake_boat)
 
-    # # # #绘图
-    all_area_ratio=0
-    all_num=0
-    for brake_num,e_brake_boat in all_brake_boat.items():
-        area_ratio=one_brake_area_ratio(e_brake_boat['brake_boat'], L, W)
-        brake_num=len(e_brake_boat['brake_boat'])
-        all_area_ratio = all_area_ratio+area_ratio
-        all_num = all_num +brake_num
-        print(f'brake_num area_ratio={area_ratio},brake_num={brake_num}')
-
-        # X, Y, li_e, wi_e, N_e=build_plot_para(e_brake_boat['brake_boat'])
-        # print('绘图')
-        # plot_example(X, Y, li_e, wi_e,N_e)
-    print(f'总面积使用率为：{all_area_ratio},总闸次数：{len(all_brake_boat)}，总船数为：{all_num}')
-    print(f'平均一个闸室面积使用率为：{all_area_ratio / len(all_brake_boat)},总船数为：{all_num}')
 
