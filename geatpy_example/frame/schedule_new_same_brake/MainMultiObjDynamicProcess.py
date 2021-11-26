@@ -35,6 +35,32 @@ def plot_save(brake_boat,brake_num):
     plot_example(X, Y, li_e, wi_e, N_e,brake_num=brake_num)
     print('plot finished')
 
+def get_raw_num_brake_boat( params):
+    '''
+    顺序对齐
+    :return:
+    '''
+    #最优序列顺序
+    best_sort_sequence_=params['best_sort_sequence']
+    #闸次数
+    brakes=params['brakes']
+    #输入的原始序列
+    wait_list=params['wait_list']
+
+    best_brake_seq = wait_list[best_sort_sequence_]
+    all_brake_boat, brakes = quick_sort_multi_brakes(best_brake_seq, brakes=brakes)
+
+    for brake_num, e_brake_boat in all_brake_boat.items():
+        brake_boat = e_brake_boat['brake_boat']
+
+        # 将快速入闸的顺序，对应到最优选择的顺序
+        brake_boat = {best_sort_sequence_[k]: v for k, v in brake_boat.items()}
+        # 将最优选择的顺序，对应到最原始的队列中的序号
+        wait_list_num = np.array([i for i in range(len(wait_list))])
+        brake_boat = {wait_list_num[k]: v for k, v in brake_boat.items()}
+        e_brake_boat['brake_boat'] = brake_boat
+    return all_brake_boat
+
 
 def batch_brakes(each_wait_list,L,W):
     # def get_sqare_rate(in_brake_sort, L,W):
@@ -110,24 +136,40 @@ def batch_brakes(each_wait_list,L,W):
     brakes_num_=obj_sort[0][2:3]
     best_sort_sequence_=obj_sort[0][3:]
     best_sort_sequence_ = [int(each) for each in best_sort_sequence_]
-    print(f'obj_opt={obj_opt}')
-    print(f'brakes_num_={brakes_num_}')
-    print(f'best_sort_sequence={best_sort_sequence_}')
+    print(f'obj_opt 0 ={obj_opt}')
+    print(f'brakes_num_ 0={brakes_num_}')
+    print(f'best_sort_sequence_0={best_sort_sequence_}')
+
+    all_res = []
+    for each in obj_sort:
+        ###且闸次数量要小于之前的，否则不加进来
+        if each[0] < obj_opt[0]:
+            print(each)
+            all_res.append(each)
+
+            obj_opt_1 = each[:2]
+            brakes_num_1 = each[2:3]
+            best_sort_sequence_1 = each[3:]
+            best_sort_sequence_1 = [int(each_) for each_ in best_sort_sequence_1]
+            print(f'obj_opt 1 ={obj_opt_1}')
+            print(f'brakes_num_ 1={brakes_num_1}')
+            print(f'best_sort_sequence_1={best_sort_sequence_1}')
+            break
 
 
-    # # 输出结果
-    # best_gen = np.argmin(problem.maxormins * obj_trace[:, 1])  # 记录最优种群个体是在哪一代
-    # best_ObjV = obj_trace[best_gen, 1]
-    # print('最优的目标函数值为：%s' % (best_ObjV))
-    # print('最优的控制变量值为：')
+
+    # params0={'best_sort_sequence':}
+    #  #最优序列顺序
+    # best_sort_sequence_=params0['best_sort_sequence_']
+    # #闸次数
+    # brakes=params['brakes']
+    # #输入的原始序列
+    # wait_list=params['wait_list']
     #
-    # for i in range(var_trace.shape[1]):  # (MAXGEN,Dim),进化的总代数和决策变量的维度
-    #     print(var_trace[best_gen, i])
-    #
-    # best_sort_sequence = [int(each) for each in var_trace[best_gen]]  # (4000, 12)
+    # params=
+    # get_raw_num_brake_boat(params)
 
     best_brake_seq = wait_list[best_sort_sequence_]
-
     brakes = {f'{i}': [L, W] for i in range(int(brakes_num_[0]))}
     all_brake_boat,brakes=quick_sort_multi_brakes(best_brake_seq,brakes=brakes)
 
@@ -202,21 +244,25 @@ if __name__ == '__main__':
  # (104.0, 17.0),
  # (110.0, 17.2)])
     wait_list = np.array(
-        [[105.0, 16.0], [110.0, 18.0], [100.0, 17.0], [106.0, 18.0],
-         [109.0, 18.0], [130.0, 17.0],
+        [
+         [105.0, 16.0], [110.0, 18.0], [100.0, 17.0], [106.0, 18.0],
+         [109.0, 18.0], [130.0, 16],
          [108.0, 18.0], [92.0, 15.0], [110.0, 18.0], [100.0, 18.0], [95.0, 16.0], [110.0, 20.0], [105.0, 17.0],
          [110.0, 18.0], [110.0, 18.0], [108.0, 18.0], [100.0, 17.0], [92.0, 15.0], [105.0, 16.0], [85.0, 15.0],
-         [85.0, 14.0], [130.0, 17.0], [87.0, 15.0], [92.0, 15.0], [87.0, 14.0], [85.0, 14.0], [75.0, 14.0],
+         [85.0, 14.0], [130.0, 16], [87.0, 15.0], [92.0, 15.0], [87.0, 14.0], [85.0, 14.0], [75.0, 14.0],
          [100.0, 18.0], [80.0, 14.0], [80.0, 14.0], [92.0, 15.0], [95.0, 16.0], [80.0, 14.0], [107.0, 17.0],
          [92.0, 17.0], [87.0, 14.0], [106.0, 17.0], [130.0, 16.0], [93.0, 14.0], [100.0, 17.0], [80.0, 14.0],
          [95.0, 17.0], [75.0, 14.0], [79.0, 13.0], [80.0, 14.0], [77.0, 14.0], [89.0, 15.0], [88.0, 17.0],
-         [87.0, 15.0], [92.0, 17.0], [105.0, 16.0], [110.0, 18.0], [100.0, 16.0], [130.0, 17.0], [110.0, 17.0],
+         [87.0, 15.0], [92.0, 17.0], [105.0, 16.0], [110.0, 18.0], [100.0, 16.0], [130.0, 16], [110.0, 17.0],
          [87.0, 15.0], [110.0, 18.0], [105.0, 17.0], [85.0, 14.0], [78.0, 14.0], [100.0, 17.0], [107.0, 17.0],
          [92.0, 15.0], [75.0, 13.0], [80.0, 14.0], [90.0, 17.0]
          ])
 
-    # wait_list = np.array(
-    #     [[105.0, 16.0], [110.0, 16.0], [100.0, 15.0], [106.0, 14.0]])
+    wait_list = np.array(
+        [
+            [87.0, 15.0], [110.0, 18.0], [105.0, 17.0], [85.0, 14.0], [78.0, 14.0], [100.0, 17.0], [107.0, 17.0],[80.0, 14.0],
+            [90.0, 17.0]
+         ])
 
     # wait_list=wait_list[6:12]
     # 按照宽度排序，宽的在前么

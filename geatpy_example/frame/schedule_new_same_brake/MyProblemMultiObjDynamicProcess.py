@@ -12,22 +12,24 @@ def subAimFunc(args):
     Vars_i=args[0].astype(np.int)
     wait_list=args[1]
     brakes_num_para=int(args[2])
+    # print(f'args[2]={args[2]}')
     L = 266
     W=32.8
-    brakes = {f'{i}': [L, W] for i in range(brakes_num_para)}
+    brakes_ = {f'{i}': [L, W] for i in range(brakes_num_para)}
 
     def get_sqare_rate(in_brake_sort, brakes):
         # print(f'in_brake_sort={in_brake_sort}')
-        all_brake_boat,brakes = quick_sort_multi_brakes(in_brake_sort, brakes)
+        all_brake_boat,_ = quick_sort_multi_brakes(in_brake_sort, brakes)
         sqare_rate = 0
         for brake_num, e_brake_boat in all_brake_boat.items():
             L, W = brakes[brake_num]
             area_ratio = one_brake_area_ratio(e_brake_boat['brake_boat'], L, W)
             sqare_rate += area_ratio
+        # print('brakes00',brakes)
         return sqare_rate,sqare_rate/len(brakes)
 
     in_brake_sort = wait_list[Vars_i]
-    sqare_rate_all_brake,sqare_rate_avg_brake = get_sqare_rate(in_brake_sort, brakes)
+    sqare_rate_all_brake,sqare_rate_avg_brake = get_sqare_rate(in_brake_sort, brakes_)
     return sqare_rate_all_brake,sqare_rate_avg_brake
 
 
@@ -45,7 +47,7 @@ class MyProblem(ea.Problem):  # 继承Problem父类
 
         ##这里是选排列，范围是0-11，但是每次只选其中的6个数字排列
         #维度是Dim,范围是0~N-1；例如Dim=18，N=28，即选取18个数字进行排列，范围是从0-27当中选
-        Dim = 1+N  # 初始化Dim（决策变量维数）
+        Dim = 1+min(max_avg*6,N)  # 初始化Dim（决策变量维数）
         varTypes = [1]*Dim  # 初始化varTypes（决策变量的类型，元素为0表示对应的变量是连续的；1表示是离散的）
 
 
@@ -54,6 +56,8 @@ class MyProblem(ea.Problem):  # 继承Problem父类
         ub = [max_avg]+[N-1]*(Dim-1)    # 决策变量上界
         lbin = [1]*Dim # 决策变量下边界（0表示不包含该变量的下边界，1表示包含）
         ubin = [1]*Dim  # 决策变量上边界（0表示不包含该变量的上边界，1表示包含）
+        # print(f'lb={lb}')
+        # print(f'ub={ub}')
 
         # 调用父类构造方法完成实例化
         ea.Problem.__init__(self, name, M, maxormins, Dim, varTypes, lb, ub, lbin, ubin)
@@ -62,6 +66,8 @@ class MyProblem(ea.Problem):  # 继承Problem父类
 
     def aimFunc(self, pop):  # 目标函数
         Vars = pop.Phen  # 得到决策变量矩阵(6000, 6)
+
+        # print('Vars shape',Vars)
         args = list(zip(Vars[:,1:], [self.wait_list] * pop.sizes, Vars[:,0]))
         result = self.pool.map_async(subAimFunc, args)
         result.wait()
