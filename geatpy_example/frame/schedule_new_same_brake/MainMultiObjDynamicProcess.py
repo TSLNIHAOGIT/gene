@@ -61,7 +61,7 @@ def batch_brakes(each_wait_list,L,W):
     """===============================实例化问题对象==========================="""
     problem = MyProblem(wait_list, brakes=None)  # 生成问题对象
     """=================================种群设置==============================="""
-    NIND = 100  # 5000 种群规模
+    NIND = 80  # 5000 种群规模
     Encodings = ['RI', 'P']
     Field1 = ea.crtfld(Encodings[0], problem.varTypes[:1], problem.ranges[:, :1], problem.borders[:, :1])
     Field2 = ea.crtfld(Encodings[1], problem.varTypes[1:], problem.ranges[:, 1:], problem.borders[:, 1:])
@@ -80,7 +80,7 @@ def batch_brakes(each_wait_list,L,W):
     myAlgorithm=ea.moea_psy_NSGA2_templet(problem, population)
     # myAlgorithm = ea.moea_psy_NSGA3_templet(problem, population)
 
-    myAlgorithm.MAXGEN = 80# 30;13 # 最大进化代数
+    myAlgorithm.MAXGEN = 150# 30;13 # 最大进化代数
     # myAlgorithm.recOper = ea.Xovox(XOVR=0.8)  # 设置交叉算子 __init__(self, XOVR=0.7, Half=False)
     # myAlgorithm.mutOper = ea.Mutinv(Pm=0.2)  # 设置变异算子
     myAlgorithm.logTras = 0  # 设置每多少代记录日志，若设置成0则表示不记录日志
@@ -227,7 +227,7 @@ if __name__ == '__main__':
     # L = 280
 
     W = 32.8  # 34 ,32.8
-    L =264  # 280,264
+    L =266  # 280,264
 
     # W=82
     # L=430

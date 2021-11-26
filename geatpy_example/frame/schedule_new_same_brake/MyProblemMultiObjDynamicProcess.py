@@ -12,8 +12,8 @@ def subAimFunc(args):
     Vars_i=args[0].astype(np.int)
     wait_list=args[1]
     brakes_num_para=int(args[2])
-    L = 280
-    W=34
+    L = 266
+    W=32.8
     brakes = {f'{i}': [L, W] for i in range(brakes_num_para)}
 
     def get_sqare_rate(in_brake_sort, brakes):
