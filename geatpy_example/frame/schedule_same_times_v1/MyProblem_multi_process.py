@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 import geatpy as ea
+import multiprocessing as mp
 from geatpy_example.frame.schedule_same_times_v1.quick_sort_brake import quick_sort_brake
 ##遗传算法解决问题分为两种，一种是将问题转为规划类问题求解；一种是直接对原问题进行求解
 

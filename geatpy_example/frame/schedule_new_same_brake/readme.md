@@ -20,7 +20,8 @@
   以下三个均是单目标函数使得总面积利用率最大
   quick_sort_multi_brakes.py: 固定闸次情况下，一个闸室可排点试完放不下就放弃该船
   quick_sort_multi_brakes_complete.py: 固定闸次情况下，所有闸室可排点试完放不下就放弃该船
-  quick_sort_multi_dynamic_brakes_complete.py:动态闸次【不固定】情况下，所有闸室可排点试完放不下就放弃该船
+  quick_sort_multi_dynamic_brakes_complete.py:【动态闸次目前的逻辑有问题，需要加个变量，作为闸次的变量，构建两个目标的函数，】动态闸次【不固定】情况下，所有闸室可排点试完放不下就放弃该船
+
 
   #多目标函数：1.总面积利用率最大[使得所有船舶被放完]，2.平均一个闸室面积利用率最大，使得闸次数最少
   # quick_sort_multi_obj_dynamic_brakes_complete.py:动态闸次【不固定】情况下，所有闸室可排点试完放不下就放弃该船

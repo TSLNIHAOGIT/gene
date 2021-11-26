@@ -143,21 +143,21 @@ def quick_sort_multi_brakes(wait_list,brakes):
     1: {'brake_boat': {30: [(0, 0), (92.0, 15.0)], 49: [(0, 15.0), (92.0, 17.0)], 41: [(92.0, 0), (95.0, 17.0)], 19: [(92.0, 17.0), (85.0, 15.0)], 24: [(177.0, 17.0), (87.0, 14.0)], 45: [(187.0, 0), (77.0, 14.0)]}, 'best_use_rate': 0.8539915966386554},
     2: {'brake_boat': {48: [(0, 0), (87.0, 15.0)], 5: [(0, 15.0), (130.0, 17.0)], 7: [(87.0, 0), (92.0, 15.0)], 37: [(130.0, 15.0), (130.0, 16.0)], 58: [(179.0, 0), (85.0, 14.0)]}, 'best_use_rate': 0.8576680672268907}}
     '''
-    L=280
-    W=34
-    # brakes={'1':[L,W],'2':[L,W],'3':[L,W]}
-    N=len(wait_list)
-    #会使得闸次偏少
-    avg_num_boat=N//4
-    if avg_num_boat-3>0:
-        avg_num_boat=np.random.choice([avg_num_boat-3,avg_num_boat-2,avg_num_boat-1,avg_num_boat,avg_num_boat+1,avg_num_boat+2,avg_num_boat+3],
-                                      p=[0.1,0.1,0.2,0.2,0.2,0.1,0.1]
-                                      )
-    else:
-        avg_num_boat = np.random.choice(
-            [max(1,avg_num_boat), avg_num_boat + 1, avg_num_boat + 2,avg_num_boat + 3],
-            )
-    brakes={f'{i}':[L,W] for i in range(avg_num_boat)}
+    # L=280
+    # W=34
+    # # brakes={'1':[L,W],'2':[L,W],'3':[L,W]}
+    # N=len(wait_list)
+    # #会使得闸次偏少
+    # avg_num_boat=N//4
+    # if avg_num_boat-3>0:
+    #     avg_num_boat=np.random.choice([avg_num_boat-3,avg_num_boat-2,avg_num_boat-1,avg_num_boat,avg_num_boat+1,avg_num_boat+2,avg_num_boat+3],
+    #                                   p=[0.1,0.1,0.2,0.2,0.2,0.1,0.1]
+    #                                   )
+    # else:
+    #     avg_num_boat = np.random.choice(
+    #         [max(1,avg_num_boat), avg_num_boat + 1, avg_num_boat + 2,avg_num_boat + 3],
+    #         )
+    # brakes={f'{i}':[L,W] for i in range(avg_num_boat)}
     # # 所有闸室的可排序点队列
     all_brakes_available_queue={ i:[(0, 0)] for i in brakes}
     all_brake_boat = {i:{'brake_boat':{}} for i in brakes}  # 船的序号，长，宽，在闸室中的坐标

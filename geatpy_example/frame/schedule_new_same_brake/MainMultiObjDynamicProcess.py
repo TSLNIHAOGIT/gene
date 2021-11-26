@@ -3,11 +3,11 @@ import numpy as np
 import geatpy as ea # import geatpy
 import sys,os
 sys.path.insert(0,os.path.abspath(os.path.join(os.path.dirname(__file__),'../../..')))
-from geatpy_example.frame.schedule_new_same_brake.MyProblemMultiProcess import MyProblem # 导入自定义问题接口
+from geatpy_example.frame.schedule_new_same_brake.MyProblemMultiObjDynamicProcess  import MyProblem # 导入自定义问题接口
 from geatpy_example.frame.schedule_new_same_brake.plot_example import plot_example
 # from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes import quick_sort_multi_brakes
 # from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes_complete import quick_sort_multi_brakes
-from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_dynamic_brakes_complete import quick_sort_multi_brakes
+from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_obj_dynamic_brakes_complete import quick_sort_multi_brakes
 from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes import build_plot_para,one_brake_area_ratio
 import json
 
@@ -61,14 +61,24 @@ def batch_brakes(each_wait_list,L,W):
     """===============================实例化问题对象==========================="""
     problem = MyProblem(wait_list, brakes=brakes)  # 生成问题对象
     """=================================种群设置==============================="""
-    Encoding = 'P'  # 编码方式
-    NIND = 120 #5000 种群规模
-    # ranges还是原来的Field会在最后一行加上1
-    Field = ea.crtfld(Encoding, problem.varTypes, problem.ranges, problem.borders)  # 创建区域描述器
-    population = ea.Population(Encoding, Field, NIND)  # 实例化种群对象（此时种群还没被初始化，仅仅是完成种群对象的实例化）
+    NIND = 120  # 5000 种群规模
+    Encodings = ['RI', 'P']
+    Field1 = ea.crtfld(Encodings[0], problem.varTypes[:1], problem.ranges[:, :1], problem.borders[:, :1])
+    Field2 = ea.crtfld(Encodings[1], problem.varTypes[1:], problem.ranges[:, 1:], problem.borders[:, 1:])
+    Fields = [Field1, Field2]
+    population = ea.PsyPopulation(Encodings, Fields, NIND)  # 实例化种群对象（此时种群还没被初始化，仅仅是完成种群对象的实例化）
+
+    # Encoding = 'P'  # 编码方式
+    # NIND = 120 #5000 种群规模
+    # # ranges还是原来的Field会在最后一行加上1
+    # Field = ea.crtfld(Encoding, problem.varTypes, problem.ranges, problem.borders)  # 创建区域描述器
+    # population = ea.Population(Encoding, Field, NIND)  # 实例化种群对象（此时种群还没被初始化，仅仅是完成种群对象的实例化）
     """===============================算法参数设置============================="""
     # myAlgorithm = ea.soea_SEGA_templet(problem, population)  # 实例化一个算法模板对象，单目标模板
-    myAlgorithm=ea.moea_NSGA2_templet(problem, population)  #多目模板
+    # myAlgorithm=ea.moea_NSGA2_templet(problem, population)  #多目模板
+    #混合染色体编码多目标模板
+    myAlgorithm=ea.moea_psy_NSGA2_templet(problem, population)
+
     myAlgorithm.MAXGEN = 80# 30;13 # 最大进化代数
     # myAlgorithm.recOper = ea.Xovox(XOVR=0.8)  # 设置交叉算子 __init__(self, XOVR=0.7, Half=False)
     # myAlgorithm.mutOper = ea.Mutinv(Pm=0.2)  # 设置变异算子
@@ -77,8 +87,16 @@ def batch_brakes(each_wait_list,L,W):
     myAlgorithm.drawing = 1  # 设置绘图方式（0：不绘图；1：绘制结果图；2：绘制目标空间过程动画；3：绘制决策空间过程动画）
 
     """==========================调用算法模板进行种群进化======================="""
-    [population, obj_trace, var_trace] = myAlgorithm.run()  # 执行算法模板
-    # population.save()  # 把最后一代种群的信息保存到文件中
+    NDSet=myAlgorithm.run()
+    # [population, obj_trace, var_trace] = myAlgorithm.run()  # 执行算法模板
+    NDSet.save()  # 把非支配种群的信息保存到文件中
+
+    print('用时：%f秒' % (myAlgorithm.passTime))
+    print('评价次数：%d次' % (myAlgorithm.evalsNum))
+    print('非支配个体数：%d个' % (NDSet.sizes))
+    print('单位时间找到帕累托前沿点个数：%d个' % (int(NDSet.sizes // myAlgorithm.passTime))
+
+
 
     # 输出结果
     best_gen = np.argmin(problem.maxormins * obj_trace[:, 1])  # 记录最优种群个体是在哪一代
@@ -179,8 +197,8 @@ if __name__ == '__main__':
          [92.0, 15.0], [75.0, 13.0], [80.0, 14.0], [90.0, 17.0]
          ])
 
-    wait_list = np.array(
-        [[105.0, 16.0], [110.0, 16.0], [100.0, 15.0], [106.0, 14.0]])
+    # wait_list = np.array(
+    #     [[105.0, 16.0], [110.0, 16.0], [100.0, 15.0], [106.0, 14.0]])
 
     # wait_list=wait_list[6:12]
     # 按照宽度排序，宽的在前么

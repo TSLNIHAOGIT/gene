@@ -132,7 +132,7 @@ def get_maxprob_brake_num(params):
 
 
 
-def quick_sort_multi_brakes(wait_list,brakes):
+def quick_sort_multi_brakes(wait_list,brakes,training=True):
     '''
     wait_list:待排船队列
     brakes={'0':[L,W],'1':[L,W],'2':[L,W]} 闸室信息，闸的序号和长宽
@@ -146,19 +146,20 @@ def quick_sort_multi_brakes(wait_list,brakes):
     L=280
     W=34
     # brakes={'1':[L,W],'2':[L,W],'3':[L,W]}
-    N=len(wait_list)
-    #会使得闸次偏少
-    avg_num_boat=N//4
-    if avg_num_boat-3>0:
-        avg_num_boat=np.random.choice([avg_num_boat-3,avg_num_boat-2,avg_num_boat-1,avg_num_boat,avg_num_boat+1,avg_num_boat+2,avg_num_boat+3],
-                                      p=[0.1,0.1,0.2,0.2,0.2,0.1,0.1]
-                                      )
-    else:
-        avg_num_boat = np.random.choice(
-            [max(1,avg_num_boat), avg_num_boat + 1, avg_num_boat + 2,avg_num_boat + 3],
-            # p=[0.4,0.3,0.2,0.1]
-            )
-    brakes={f'{i}':[L,W] for i in range(avg_num_boat)}
+    if training:
+        N=len(wait_list)
+        #会使得闸次偏少
+        avg_num_boat=N//4
+        if avg_num_boat-3>0:
+            avg_num_boat=np.random.choice([avg_num_boat-3,avg_num_boat-2,avg_num_boat-1,avg_num_boat,avg_num_boat+1,avg_num_boat+2,avg_num_boat+3],
+                                          p=[0.1,0.1,0.2,0.2,0.2,0.1,0.1]
+                                          )
+        else:
+            avg_num_boat = np.random.choice(
+                [max(1,avg_num_boat), avg_num_boat + 1, avg_num_boat + 2,avg_num_boat + 3],
+                # p=[0.4,0.3,0.2,0.1]
+                )
+        brakes={f'{i}':[L,W] for i in range(avg_num_boat)}
     # # 所有闸室的可排序点队列
     all_brakes_available_queue={ i:[(0, 0)] for i in brakes}
     all_brake_boat = {i:{'brake_boat':{}} for i in brakes}  # 船的序号，长，宽，在闸室中的坐标

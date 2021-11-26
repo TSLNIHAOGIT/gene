@@ -71,8 +71,8 @@ def one_brake_area_ratio(brake_boat,L,W):
     s=0
     for k,v in brake_boat.items():
         s=s+v[1][0]*v[1][1]
-    # return s/(L*W)
-    return s / (280 * 34)
+    return s/(L*W)
+    # return s / (280 * 34)
 
 
 def build_plot_para(brake_boat):

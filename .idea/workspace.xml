@@ -2,26 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d38b7577-1d21-433f-a145-993722867d41" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/MainMultiProcess.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/MyProblemMultiProcess.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiDynamicProcess.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiDynamicProcess.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiObjDynamicProcess.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_dynamic_brakes_complete.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_obj_dynamic_brakes_complete.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/multiobj_example/eg1/Main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/multiobj_example/eg1/MyProblem.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geatpy_example/frame/multiobj_example/eg2/MyProblem.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule/plot_example.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule/plot_example.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/quick_sort_brake.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new/quick_sort_brake.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiDynamicProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiDynamicProcess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiProcess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiProcess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/plot_example.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/plot_example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiDynamicProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiDynamicProcess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiObjDynamicProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiObjDynamicProcess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/CV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/CV.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/FitnV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/FitnV.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/ObjV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/ObjV.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/Phen.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/Result/Phen.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_brakes.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_brakes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_brakes_complete.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_brakes_complete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_dynamic_brakes_complete.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_dynamic_brakes_complete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_obj_dynamic_brakes_complete.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_obj_dynamic_brakes_complete.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/single_obj_programming_milp/Result/FitnV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/single_obj_programming_milp/Result/FitnV.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/single_obj_programming_milp/result1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/single_obj_programming_milp/result1.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geatpy_example/frame/schedule_same_times_v1/MyProblem_multi_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/geatpy_example/frame/schedule_same_times_v1/MyProblem_multi_process.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,19 +48,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\multiobj_example\eg1" />
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new\boat_data" />
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new" />
+      <recent name="E:\tsl_file\python_project\gene" />
+      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\single_obj_programming" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new_same_brake" />
       <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new" />
       <recent name="E:\tsl_file\python_project\gene" />
       <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame" />
       <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_same_times" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new\boat_data" />
-      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\schedule_new" />
-      <recent name="E:\tsl_file\python_project\gene" />
-      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\single_obj_programming" />
-      <recent name="E:\tsl_file\python_project\gene\geatpy_example\frame\single_obj_programming\other_ga\cpplex_eg" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -77,7 +75,49 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.MainMultiProcess (1)">
+  <component name="RunManager" selected="Python.MainMultiObjDynamicProcess">
+    <configuration name="Main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="gene" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/geatpy_example/frame/schedule" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/schedule/Main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Main (2)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="gene" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/geatpy_example/frame/multiobj_example" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="E:\tsl_file\python_project\gene\geatpy_example\frame\multiobj_example\eg1\Main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Main" type="PythonConfigurationType" factoryName="Python">
       <module name="gene" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -99,7 +139,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="MainMultiDynamicProcess" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="MainMultiObjDynamicProcess" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="gene" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -111,28 +151,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiDynamicProcess.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="MainMultiProcess (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="gene" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/geatpy_example/frame/schedule_new" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/schedule_new/MainMultiProcess.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -162,7 +181,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="plot_example" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="MyProblem" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="gene" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -170,32 +189,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/geatpy_example/frame/multiobj_example/eg2" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/plot_example.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="quick_sort_multi_dynamic_brakes_complete" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="gene" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_dynamic_brakes_complete.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/geatpy_example/frame/multiobj_example/eg2/MyProblem.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -206,11 +204,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.MainMultiProcess (1)" />
-        <item itemvalue="Python.MainMultiDynamicProcess" />
+        <item itemvalue="Python.MainMultiObjDynamicProcess" />
+        <item itemvalue="Python.MyProblem" />
         <item itemvalue="Python.MainMultiProcess" />
-        <item itemvalue="Python.plot_example" />
-        <item itemvalue="Python.quick_sort_multi_dynamic_brakes_complete" />
+        <item itemvalue="Python.Main (2)" />
+        <item itemvalue="Python.Main (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -440,37 +438,37 @@
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_same_times_v1/MyProblem_multi_process.py</url>
-          <line>97</line>
+          <line>98</line>
           <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_same_times_v1/MyProblem_multi_process.py</url>
-          <line>98</line>
+          <line>99</line>
           <option name="timeStamp" value="63" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_same_times_v1/MyProblem_multi_process.py</url>
-          <line>100</line>
+          <line>101</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_same_times_v1/MyProblem_multi_process.py</url>
-          <line>102</line>
+          <line>103</line>
           <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_same_times_v1/MyProblem_multi_process.py</url>
-          <line>95</line>
+          <line>96</line>
           <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_same_times_v1/MyProblem_multi_process.py</url>
-          <line>96</line>
+          <line>97</line>
           <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_same_times_v1/MyProblem_multi_process.py</url>
-          <line>94</line>
+          <line>95</line>
           <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
@@ -620,53 +618,133 @@
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_dynamic_brakes_complete.py</url>
-          <line>160</line>
+          <line>161</line>
           <option name="timeStamp" value="129" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_dynamic_brakes_complete.py</url>
-          <line>162</line>
+          <line>163</line>
           <option name="timeStamp" value="130" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_dynamic_brakes_complete.py</url>
-          <line>152</line>
+          <line>153</line>
           <option name="timeStamp" value="131" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_dynamic_brakes_complete.py</url>
-          <line>157</line>
+          <line>158</line>
           <option name="timeStamp" value="132" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_dynamic_brakes_complete.py</url>
-          <line>150</line>
+          <line>151</line>
           <option name="timeStamp" value="133" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/quick_sort_multi_dynamic_brakes_complete.py</url>
-          <line>156</line>
+          <line>157</line>
           <option name="timeStamp" value="134" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiDynamicProcess.py</url>
-          <line>102</line>
-          <option name="timeStamp" value="139" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+        <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiDynamicProcess.py</url>
           <line>103</line>
+          <option name="timeStamp" value="139" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiDynamicProcess.py</url>
+          <line>104</line>
           <option name="timeStamp" value="140" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+        <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiDynamicProcess.py</url>
-          <line>108</line>
+          <line>111</line>
           <option name="timeStamp" value="141" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+        <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiDynamicProcess.py</url>
-          <line>110</line>
+          <line>114</line>
           <option name="timeStamp" value="142" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiObjDynamicProcess.py</url>
+          <line>64</line>
+          <option name="timeStamp" value="143" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiObjDynamicProcess.py</url>
+          <line>65</line>
+          <option name="timeStamp" value="144" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiObjDynamicProcess.py</url>
+          <line>66</line>
+          <option name="timeStamp" value="145" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiObjDynamicProcess.py</url>
+          <line>71</line>
+          <option name="timeStamp" value="146" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py</url>
+          <line>73</line>
+          <option name="timeStamp" value="147" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py</url>
+          <line>74</line>
+          <option name="timeStamp" value="148" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py</url>
+          <line>77</line>
+          <option name="timeStamp" value="149" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py</url>
+          <line>81</line>
+          <option name="timeStamp" value="150" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiObjDynamicProcess.py</url>
+          <line>35</line>
+          <option name="timeStamp" value="153" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiObjDynamicProcess.py</url>
+          <line>36</line>
+          <option name="timeStamp" value="154" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiObjDynamicProcess.py</url>
+          <line>37</line>
+          <option name="timeStamp" value="155" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiObjDynamicProcess.py</url>
+          <line>60</line>
+          <option name="timeStamp" value="156" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/multiobj_example/eg2/MyProblem.py</url>
+          <line>51</line>
+          <option name="timeStamp" value="161" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MyProblemMultiObjDynamicProcess.py</url>
+          <line>69</line>
+          <option name="timeStamp" value="162" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py</url>
+          <line>89</line>
+          <option name="timeStamp" value="167" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/geatpy_example/frame/schedule_new_same_brake/MainMultiObjDynamicProcess.py</url>
+          <line>94</line>
+          <option name="timeStamp" value="168" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

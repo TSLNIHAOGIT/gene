@@ -48,13 +48,14 @@ class MyProblem(ea.Problem):  # 继承Problem父类
 
         # 调用父类构造方法完成实例化
         ea.Problem.__init__(self, name, M, maxormins, Dim, varTypes, lb, ub, lbin, ubin)
-        num_cores = 4
+        num_cores = 8
         self.pool = ProcessPool(num_cores)  # 设置池的大小
 
     def aimFunc(self, pop):  # 目标函数
         Vars = pop.Phen  # 得到决策变量矩阵(6000, 6)
         args = list(zip(Vars, [self.wait_list] * pop.sizes, [self.brakes] * pop.sizes))
         result = self.pool.map_async(subAimFunc, args)
+        # result = self.pool.map(subAimFunc, args)
         result.wait()
         # print('result',result)
         res = result.get()

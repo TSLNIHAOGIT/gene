@@ -6,6 +6,7 @@ sys.path.insert(0,os.path.abspath(os.path.join(os.path.dirname(__file__),'../../
 from geatpy_example.frame.schedule_new_same_brake.MyProblemMultiDynamicProcess import MyProblem # 导入自定义问题接口
 ##固定闸次优化
 # from geatpy_example.frame.schedule_new_same_brake.MyProblemMultiProcess import MyProblem
+
 from geatpy_example.frame.schedule_new_same_brake.plot_example import plot_example
 # from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes import quick_sort_multi_brakes
 # from geatpy_example.frame.schedule_new_same_brake.quick_sort_multi_brakes_complete import quick_sort_multi_brakes
@@ -81,7 +82,7 @@ def batch_brakes(each_wait_list,L,W):
     # myAlgorithm.mutOper = ea.Mutinv(Pm=0.2)  # 设置变异算子
     myAlgorithm.logTras = 0  # 设置每多少代记录日志，若设置成0则表示不记录日志
     myAlgorithm.verbose = True  # 设置是否打印输出日志信息
-    myAlgorithm.drawing = 0  # 设置绘图方式（0：不绘图；1：绘制结果图；2：绘制目标空间过程动画；3：绘制决策空间过程动画）
+    myAlgorithm.drawing = 1  # 设置绘图方式（0：不绘图；1：绘制结果图；2：绘制目标空间过程动画；3：绘制决策空间过程动画）
 
     """==========================调用算法模板进行种群进化======================="""
     [population, obj_trace, var_trace] = myAlgorithm.run()  # 执行算法模板
@@ -102,11 +103,14 @@ def batch_brakes(each_wait_list,L,W):
     # 输出结果
     best_gen = np.argmin(problem.maxormins * obj_trace[:, 1])  # 记录最优种群个体是在哪一代
     best_ObjV = obj_trace[best_gen, 1]
-    all_brake_boat_return=problem.all_brake_boat[best_gen-1]
-    print('all_brake_boat_return',all_brake_boat_return)
-    print('all_brake_boat_return-1', problem.all_brake_boat[best_gen-1])
-    print('all_brake_boat_return+1', problem.all_brake_boat[best_gen+1])
+
+    #逻辑上有错，problem.all_brake_boat记录的是最后一代，群体数量（所有个体），而trace记录的是每一代中的最优个体
+    # all_brake_boat_return=problem.all_brake_boat[best_gen-1]
+    # print('all_brake_boat_return',all_brake_boat_return)
+    # print('all_brake_boat_return-1', problem.all_brake_boat[best_gen-1])
+    # print('all_brake_boat_return+1', problem.all_brake_boat[best_gen+1])
     print('最优的目标函数值为：%s' % (best_ObjV))
+    print('problem.brakes',problem.brakes)
 
     # print('最优的控制变量值为：')
     # for i in range(var_trace.shape[1]):  # (MAXGEN,Dim),进化的总代数和决策变量的维度
@@ -116,22 +120,22 @@ def batch_brakes(each_wait_list,L,W):
     #
 
     best_brake_seq = wait_list[best_sort_sequence]
-    # all_brake_boat,_=quick_sort_multi_brakes(best_brake_seq,brakes)
+    all_brake_boat,_=quick_sort_multi_brakes(best_brake_seq,brakes)
 
-    all_brake_boat=all_brake_boat_return
+    # all_brake_boat=all_brake_boat_return
 
-    # for brake_num,e_brake_boat in all_brake_boat.items():
-    #     brake_boat=e_brake_boat['brake_boat']
-    #
-    #     # 将快速入闸的顺序，对应到最优选择的顺序
-    #     brake_boat = {best_sort_sequence[k]: v for k, v in brake_boat.items()}
-    #     # 将最优选择的顺序，对应到最原始的队列中的序号
-    #     wait_list_num = np.array([i for i in range(len(wait_list))])
-    #     brake_boat = {wait_list_num[k]: v for k, v in brake_boat.items()}
-    #     e_brake_boat['brake_boat']=brake_boat
+    for brake_num,e_brake_boat in all_brake_boat.items():
+        brake_boat=e_brake_boat['brake_boat']
+
+        # 将快速入闸的顺序，对应到最优选择的顺序
+        brake_boat = {best_sort_sequence[k]: v for k, v in brake_boat.items()}
+        # 将最优选择的顺序，对应到最原始的队列中的序号
+        wait_list_num = np.array([i for i in range(len(wait_list))])
+        brake_boat = {wait_list_num[k]: v for k, v in brake_boat.items()}
+        e_brake_boat['brake_boat']=brake_boat
 
 
-    # print(' all_brake_boat11', all_brake_boat)
+    print(' all_brake_boat11', all_brake_boat)
     
 
     print('有效进化代数：%s' % (obj_trace.shape[0]))
@@ -224,7 +228,7 @@ if __name__ == '__main__':
 
     print('N', N)
     all_brake_boat=main(wait_list, L, W)
-    all_brake_boat=all_brake_boat['all_brake_boat']
+    # all_brake_boat=all_brake_boat['all_brake_boat']
     print(f'brake_num={len(all_brake_boat)},all_brake_boat={all_brake_boat}')
 
     # # # #绘图
