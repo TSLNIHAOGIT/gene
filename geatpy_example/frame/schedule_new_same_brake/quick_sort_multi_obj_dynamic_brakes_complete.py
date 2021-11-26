@@ -157,6 +157,7 @@ def quick_sort_multi_brakes(wait_list,brakes):
     #     avg_num_boat = np.random.choice(
     #         [max(1,avg_num_boat), avg_num_boat + 1, avg_num_boat + 2,avg_num_boat + 3],
     #         )
+
     # brakes={f'{i}':[L,W] for i in range(avg_num_boat)}
     # # 所有闸室的可排序点队列
     all_brakes_available_queue={ i:[(0, 0)] for i in brakes}

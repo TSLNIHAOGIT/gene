@@ -37,7 +37,7 @@ class MyProblem(ea.Problem):  # 继承Problem父类
         M = 2  # 初始化M（目标维数）
         maxormins = [-1]  # 初始化maxormins（目标最小最大化标记列表，1：最小化该目标；-1：最大化该目标）
         self.wait_list = wait_list
-        self.brakes=brakes
+        # self.brakes=brakes
         N=len(wait_list)
         avg_num_boat = N // 4
         min_avg=max(avg_num_boat-4,1)
@@ -45,7 +45,7 @@ class MyProblem(ea.Problem):  # 继承Problem父类
 
         ##这里是选排列，范围是0-11，但是每次只选其中的6个数字排列
         #维度是Dim,范围是0~N-1；例如Dim=18，N=28，即选取18个数字进行排列，范围是从0-27当中选
-        Dim = 1+min(len(brakes)*6,N)  # 初始化Dim（决策变量维数）
+        Dim = 1+N  # 初始化Dim（决策变量维数）
         varTypes = [1]*Dim  # 初始化varTypes（决策变量的类型，元素为0表示对应的变量是连续的；1表示是离散的）
 
 
@@ -57,7 +57,7 @@ class MyProblem(ea.Problem):  # 继承Problem父类
 
         # 调用父类构造方法完成实例化
         ea.Problem.__init__(self, name, M, maxormins, Dim, varTypes, lb, ub, lbin, ubin)
-        num_cores = 1
+        num_cores = 8
         self.pool = ProcessPool(num_cores)  # 设置池的大小
 
     def aimFunc(self, pop):  # 目标函数

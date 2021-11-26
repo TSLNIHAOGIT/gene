@@ -47,21 +47,21 @@ def batch_brakes(each_wait_list,L,W):
     #     return sqare_rate,brake_boat
 
     #每个闸次对应的闸室的长宽
-    brakes = {'0': [L, W], '1': [L, W], '2': [L, W],'3': [L, W],'4': [L, W],
-              '5': [L, W], '6': [L, W], '7': [L, W],
-              '8': [L, W],'9': [L, W],
-              '10': [L, W], '11': [L, W], '12': [L, W], '13': [L, W], '14': [L, W],'15': [L, W],
-              # '16': [L, W],
-              # '17': [L, W],
-              # '18': [L, W]
-              }
+    # brakes = {'0': [L, W], '1': [L, W], '2': [L, W],'3': [L, W],'4': [L, W],
+    #           '5': [L, W], '6': [L, W], '7': [L, W],
+    #           '8': [L, W],'9': [L, W],
+    #           '10': [L, W], '11': [L, W], '12': [L, W], '13': [L, W], '14': [L, W],'15': [L, W],
+    #           # '16': [L, W],
+    #           # '17': [L, W],
+    #           # '18': [L, W]
+    #           }
     # brakes = {'0': [L, W], '1': [L, W], '2': [L, W]}
     
     wait_list=each_wait_list
     """===============================实例化问题对象==========================="""
-    problem = MyProblem(wait_list, brakes=brakes)  # 生成问题对象
+    problem = MyProblem(wait_list, brakes=None)  # 生成问题对象
     """=================================种群设置==============================="""
-    NIND = 120  # 5000 种群规模
+    NIND = 100  # 5000 种群规模
     Encodings = ['RI', 'P']
     Field1 = ea.crtfld(Encodings[0], problem.varTypes[:1], problem.ranges[:, :1], problem.borders[:, :1])
     Field2 = ea.crtfld(Encodings[1], problem.varTypes[1:], problem.ranges[:, 1:], problem.borders[:, 1:])
@@ -78,6 +78,7 @@ def batch_brakes(each_wait_list,L,W):
     # myAlgorithm=ea.moea_NSGA2_templet(problem, population)  #多目模板
     #混合染色体编码多目标模板
     myAlgorithm=ea.moea_psy_NSGA2_templet(problem, population)
+    # myAlgorithm = ea.moea_psy_NSGA3_templet(problem, population)
 
     myAlgorithm.MAXGEN = 80# 30;13 # 最大进化代数
     # myAlgorithm.recOper = ea.Xovox(XOVR=0.8)  # 设置交叉算子 __init__(self, XOVR=0.7, Half=False)
@@ -90,34 +91,51 @@ def batch_brakes(each_wait_list,L,W):
     NDSet=myAlgorithm.run()
     # [population, obj_trace, var_trace] = myAlgorithm.run()  # 执行算法模板
     NDSet.save()  # 把非支配种群的信息保存到文件中
+    problem.pool.close()
 
     print('用时：%f秒' % (myAlgorithm.passTime))
     print('评价次数：%d次' % (myAlgorithm.evalsNum))
     print('非支配个体数：%d个' % (NDSet.sizes))
-    print('单位时间找到帕累托前沿点个数：%d个' % (int(NDSet.sizes // myAlgorithm.passTime))
+    print(f'单位时间找到帕累托前沿点个数：{int(NDSet.sizes // myAlgorithm.passTime)}个' )
+    # NDSet.ObjV为最优解个体的目标函数值；NDSet.Phen为对应的决策变量值。
+    obj_=NDSet.ObjV
+    phen_=NDSet.Phen
+    # print(f'目标函数最优解：{obj_}')
+    # print(f'最优解对应的决策变量：{phen_}')
+    data = np.hstack([obj_, phen_])
+    data = np.around(data, decimals=10)  #
+    obj_sort=sorted(data, key=lambda d: (d[0], d[1]), reverse=True)
+    # print(f'obj_sort:{obj_sort}')
+    obj_opt=obj_sort[0][:2]
+    brakes_num_=obj_sort[0][2:3]
+    best_sort_sequence_=obj_sort[0][3:]
+    best_sort_sequence_ = [int(each) for each in best_sort_sequence_]
+    print(f'obj_opt={obj_opt}')
+    print(f'brakes_num_={brakes_num_}')
+    print(f'best_sort_sequence={best_sort_sequence_}')
 
 
-
-    # 输出结果
-    best_gen = np.argmin(problem.maxormins * obj_trace[:, 1])  # 记录最优种群个体是在哪一代
-    best_ObjV = obj_trace[best_gen, 1]
-    print('最优的目标函数值为：%s' % (best_ObjV))
-    print('最优的控制变量值为：')
-
-    for i in range(var_trace.shape[1]):  # (MAXGEN,Dim),进化的总代数和决策变量的维度
-        print(var_trace[best_gen, i])
-
-    best_sort_sequence = [int(each) for each in var_trace[best_gen]]  # (4000, 12)
+    # # 输出结果
+    # best_gen = np.argmin(problem.maxormins * obj_trace[:, 1])  # 记录最优种群个体是在哪一代
+    # best_ObjV = obj_trace[best_gen, 1]
+    # print('最优的目标函数值为：%s' % (best_ObjV))
+    # print('最优的控制变量值为：')
     #
+    # for i in range(var_trace.shape[1]):  # (MAXGEN,Dim),进化的总代数和决策变量的维度
+    #     print(var_trace[best_gen, i])
+    #
+    # best_sort_sequence = [int(each) for each in var_trace[best_gen]]  # (4000, 12)
 
-    best_brake_seq = wait_list[best_sort_sequence]
-    all_brake_boat,brakes=quick_sort_multi_brakes(best_brake_seq,brakes)
+    best_brake_seq = wait_list[best_sort_sequence_]
+
+    brakes = {f'{i}': [L, W] for i in range(int(brakes_num_[0]))}
+    all_brake_boat,brakes=quick_sort_multi_brakes(best_brake_seq,brakes=brakes)
 
     for brake_num,e_brake_boat in all_brake_boat.items():
         brake_boat=e_brake_boat['brake_boat']
 
         # 将快速入闸的顺序，对应到最优选择的顺序
-        brake_boat = {best_sort_sequence[k]: v for k, v in brake_boat.items()}
+        brake_boat = {best_sort_sequence_[k]: v for k, v in brake_boat.items()}
         # 将最优选择的顺序，对应到最原始的队列中的序号
         wait_list_num = np.array([i for i in range(len(wait_list))])
         brake_boat = {wait_list_num[k]: v for k, v in brake_boat.items()}
@@ -127,10 +145,10 @@ def batch_brakes(each_wait_list,L,W):
     print(' all_brake_boat11', all_brake_boat)
     
 
-    print('有效进化代数：%s' % (obj_trace.shape[0]))
-    print('最优的一代是第 %s 代' % (best_gen + 1))
-    print('评价次数：%s' % (myAlgorithm.evalsNum))
-    print('时间已过 %s 秒' % (myAlgorithm.passTime))
+    # print('有效进化代数：%s' % (obj_trace.shape[0]))
+    # print('最优的一代是第 %s 代' % (best_gen + 1))
+    # print('评价次数：%s' % (myAlgorithm.evalsNum))
+    # print('时间已过 %s 秒' % (myAlgorithm.passTime))
     return all_brake_boat
 
 def main(wait_list,L,W):
